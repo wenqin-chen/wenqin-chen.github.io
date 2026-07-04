@@ -90,7 +90,8 @@ for y, col, lab, lw, z in [(skx, C_SKX, "skyrmion crystal", 2.5, 6), (fluid, C_F
                            (spiral, C_SP, "in-plane spiral", 2.3, 5), (fm, C_FM, "ferromagnet", 2.1, 4)]:
     axB.plot(np.arange(len(y)), y, color=col, lw=0.6, alpha=0.16, zorder=z - 1)
     ra = runavg(y); axB.plot(np.arange(len(ra)) + 7, ra, color=col, lw=lw, label=lab, zorder=z)
-axB.set_xlim(0, 600); axB.set_ylim(-13.95, -12.45); axB.grid(alpha=0.2)
+axB.set_xlim(0, 600); axB.set_ylim(-13.95, -13.0); axB.grid(alpha=0.2)
+axB.axhspan(-13.881, -13.861, color="#c1121f", alpha=0.18, zorder=0)   # skyrmion crystal <-> paramagnet tie
 axB.set_xlabel("optimization step  (MinSR)")
 axB.set_ylabel(r"variational energy  $\langle H\rangle$  (Ha)")
 axB.yaxis.set_label_position("right"); axB.yaxis.tick_right()   # mirror layout keeps the middle gap clean
