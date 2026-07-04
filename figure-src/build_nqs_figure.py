@@ -73,7 +73,8 @@ axA.set_xlabel("$x$  (Bohr radii)"); axA.set_ylabel("$y$  (Bohr radii)")
 axA.set_title("Spin texture from the trained network", fontweight="bold", fontsize=12.5, pad=9)
 cb = fig.colorbar(pc, ax=axA, fraction=0.046, pad=0.03)
 cb.set_ticks([-vmax, 0, vmax]); cb.set_ticklabels([f"$-${vmax:.3f}", "0", f"{vmax:.3f}"])
-cb.set_label("out-of-plane spin  $m_z$", fontsize=10)
+cb.set_label("out-of-plane spin  $m_z$", fontsize=10, labelpad=6)
+cb.ax.yaxis.set_label_position("left")   # keep the label on the texture side of the bar, clear of Panel B
 axA.text(o[0] + 0.5 * (a1[0] + a2[0]), o[1] + 0.5 * (a1[1] + a2[1]), "magnetic\ncell",
          ha="center", va="center", fontsize=9.5, fontweight="bold", zorder=6,
          bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="k", alpha=0.82))
