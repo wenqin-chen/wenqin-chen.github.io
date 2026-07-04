@@ -176,6 +176,11 @@ p { margin: 0 0 1rem; }
 .project-figure { margin: 40px 0 12px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
 .project-figure img { width: 100%; }
 .figcaption { font-size: .86rem; color: var(--muted); margin: 12px 2px 0; max-width: var(--prose); }
+/* multi-panel figure row — e.g. a texture triptych */
+.figure-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 40px 0 12px; }
+.figure-row .cell { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
+.figure-row img { width: 100%; display: block; }
+@media (max-width: 560px) { .figure-row { gap: 8px; } }
 .prose { max-width: var(--prose); }
 .prose h2 { margin-top: 2.4rem; }
 .prose ul { padding-left: 1.15em; }

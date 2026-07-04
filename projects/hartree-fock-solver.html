@@ -41,12 +41,14 @@
         </ul>
       </div>
 
-      <figure class="project-figure">
-        <img src="../assets/figures/hf.png" alt="Bare susceptibility of the 2D electron gas validated against the analytic 2D Lindhard function" />
-      </figure>
-      <p class="figcaption">The bare susceptibility χ₀(q) of the 2D electron gas, computed on the solver's
-        momentum grid (left) and validated against the analytic 2D Lindhard function (right) — the first
-        rung of the diagnostic pipeline.</p>
+      <div class="figure-row">
+        <div class="cell"><img src="../assets/figures/hf-charge.png" alt="Charge-density crystal from a self-consistent solution" /></div>
+        <div class="cell"><img src="../assets/figures/hf-spindir.png" alt="Spin-direction texture with in-plane arrows winding around each core" /></div>
+        <div class="cell"><img src="../assets/figures/hf-spinamp.png" alt="Spin-amplitude map of the same self-consistent state" /></div>
+      </div>
+      <p class="figcaption">A self-consistent solution of the solver, shown three ways — charge-density
+        crystal (left), spin direction (middle), and spin amplitude (right). The interacting electron
+        liquid spontaneously orders into a triangular crystal with a nontrivial spin texture.</p>
 
       <div class="prose">
         <p>This is the mean-field engine behind my correlated-electron research. It solves the
@@ -60,8 +62,9 @@
           independent methods</strong>) on top.</p>
 
         <p>The emphasis throughout is <strong>numerical rigor</strong>: every quantity is checked against
-          an analytic limit or a second method (the figure shows χ₀ matching the analytic 2D Lindhard
-          result), and results are verified for basis- and grid-convergence before anything is trusted.
+          an analytic limit or a second method (for example, the bare susceptibility χ₀ is checked
+          against the analytic 2D Lindhard result), and results are verified for basis- and
+          grid-convergence before anything is trusted.
           Runs at scale on NERSC via SLURM.</p>
 
         <h2>What it demonstrates</h2>
