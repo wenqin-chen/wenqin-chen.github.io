@@ -42,19 +42,13 @@
       </div>
 
       <figure class="project-figure">
-        <img src="../assets/figures/nqs-texture.png" alt="Skyrmion-crystal spin texture measured from the trained neural-network wavefunction" />
+        <img src="../assets/figures/nqs-2panel.png" alt="Left: a skyrmion-crystal spin texture from the trained network, out-of-plane spin in colour and in-plane spin as arrows, with the skyrmion core and magnetic cell labelled. Right: four candidate states each optimized by variational Monte Carlo, converging to their energy plateaus over the 18-electron training run." />
       </figure>
-      <p class="figcaption">A spin texture measured from the trained network — a skyrmion crystal, with
-        out-of-plane spin (colour) and in-plane spin (arrows) winding around each core. The dashed
-        rhombus marks one magnetic unit cell.</p>
-
-      <figure class="project-figure">
-        <img src="../assets/figures/nqs-convergence.png" alt="Four independent variational Monte Carlo training runs converging to their energy plateaus on the 18-electron Hamiltonian" />
-      </figure>
-      <p class="figcaption">Four independent training runs on the production Hamiltonian (18 electrons),
-        each initialized from a different candidate state. Every run converges over several hundred
-        natural-gradient (MinSR) optimization steps, and the network resolves the tiny energy
-        separations between the competing states.</p>
+      <p class="figcaption"><strong>Left</strong> — a spin texture from the trained network: a skyrmion
+        crystal, with out-of-plane spin in colour and in-plane spin as arrows winding around each core
+        (the green rhombus is one magnetic cell). <strong>Right</strong> — the 18-electron training run:
+        four candidate states, each optimized by natural-gradient (MinSR) variational Monte Carlo,
+        converging to their energy plateaus.</p>
 
       <div class="prose">
         <p>The quantum many-body problem — finding the ground state of many interacting electrons — is
@@ -70,9 +64,9 @@
         <p>The project is structured as an <strong>eleven-notebook ladder</strong> that adds one piece of
           physics at a time and validates each stage against an exact reference — exact diagonalization
           or published quantum Monte Carlo. At small sizes the network reaches exact-diagonalization
-          precision and beats Hartree–Fock by a wide margin; the convergence plot shows the scaled-up
-          production run at 18 electrons, where several competing candidate states are each optimized to
-          a tight energy plateau.</p>
+          precision and beats Hartree–Fock by a wide margin; the convergence panel above shows the
+          scaled-up production run at 18 electrons, where several competing candidate states are each
+          optimized to a tight energy plateau.</p>
 
         <h2>What it demonstrates</h2>
         <ul class="tags accent">
