@@ -49,11 +49,12 @@
         rhombus marks one magnetic unit cell.</p>
 
       <figure class="project-figure">
-        <img src="../assets/figures/nqs.png" alt="Variational energy converging below Hartree-Fock to exact-diagonalization precision" />
+        <img src="../assets/figures/nqs-convergence.png" alt="Four independent variational Monte Carlo training runs converging to their energy plateaus on the 18-electron Hamiltonian" />
       </figure>
-      <p class="figcaption">The variational energy converges below the Hartree–Fock reference (dotted) to
-        exact-diagonalization precision (dashed) on the full multi-orbital Hamiltonian — the decisive
-        validation test. Right panel: MCMC acceptance and the learning-rate schedule.</p>
+      <p class="figcaption">Four independent training runs on the production Hamiltonian (18 electrons),
+        each initialized from a different candidate state. Every run converges over several hundred
+        natural-gradient (MinSR) optimization steps, and the network resolves the tiny energy
+        separations between the competing states.</p>
 
       <div class="prose">
         <p>The quantum many-body problem — finding the ground state of many interacting electrons — is
@@ -68,9 +69,10 @@
 
         <p>The project is structured as an <strong>eleven-notebook ladder</strong> that adds one piece of
           physics at a time and validates each stage against an exact reference — exact diagonalization
-          or published quantum Monte Carlo. The convergence plot shows the critical test: on the full
-          Hamiltonian, the network reaches exact-diagonalization precision and beats Hartree–Fock by a
-          wide margin.</p>
+          or published quantum Monte Carlo. At small sizes the network reaches exact-diagonalization
+          precision and beats Hartree–Fock by a wide margin; the convergence plot shows the scaled-up
+          production run at 18 electrons, where several competing candidate states are each optimized to
+          a tight energy plateau.</p>
 
         <h2>What it demonstrates</h2>
         <ul class="tags accent">
