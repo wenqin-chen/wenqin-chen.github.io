@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Continuum Hartree–Fock Many-Body Solver — Wenqin Chen</title>
+  <meta name="description" content="A from-scratch self-consistent mean-field (Hartree–Fock) solver for interacting 2D electrons, with a linear-response → instability → self-consistency diagnostic pipeline and topology checks." />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Wenqin Chen<span class="dot">.</span></a>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="../#projects">Projects</a>
+          <a href="../#about">About</a>
+          <a href="../#publications">Publications</a>
+          <a href="../assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <a class="back" href="../#projects">← All projects</a>
+
+      <div class="project-hero">
+        <p class="eyebrow">Scientific computing · Electronic structure</p>
+        <h1>A Continuum Hartree–Fock Many-Body Solver</h1>
+        <p class="lead">A from-scratch self-consistent mean-field solver for interacting 2D electrons,
+          built around a linear-response → instability → self-consistency diagnostic pipeline.</p>
+        <ul class="meta-row">
+          <li><b>Role</b> — Solo developer &amp; researcher</li>
+          <li><b>Stack</b> — Python · NumPy / SciPy</li>
+          <li><b>Scale</b> — ~10,500 lines · NERSC / SLURM</li>
+        </ul>
+      </div>
+
+      <figure class="project-figure">
+        <img src="../assets/figures/hf.png" alt="Bare susceptibility of the 2D electron gas validated against the analytic 2D Lindhard function" />
+      </figure>
+      <p class="figcaption">The bare susceptibility χ₀(q) of the 2D electron gas, computed on the solver's
+        momentum grid (left) and validated against the analytic 2D Lindhard function (right) — the first
+        rung of the diagnostic pipeline.</p>
+
+      <div class="prose">
+        <p>This is the mean-field engine behind my correlated-electron research. It solves the
+          <strong>Hartree–Fock / self-consistent-field equations</strong> for a two-dimensional electron
+          gas with Rashba spin–orbit coupling and Coulomb interaction, entirely from scratch.</p>
+
+        <p>The design is a <strong>tiered diagnostic pipeline</strong>: compute the bare susceptibility
+          χ₀(q) to find where the electron liquid wants to order, run a <strong>Stoner instability
+          analysis</strong> to rank candidate orders, then solve the full self-consistent field for the
+          winners — with band-topology diagnostics (<strong>Berry-curvature Chern numbers by two
+          independent methods</strong>) on top.</p>
+
+        <p>The emphasis throughout is <strong>numerical rigor</strong>: every quantity is checked against
+          an analytic limit or a second method (the figure shows χ₀ matching the analytic 2D Lindhard
+          result), and results are verified for basis- and grid-convergence before anything is trusted.
+          Runs at scale on NERSC via SLURM.</p>
+
+        <h2>What it demonstrates</h2>
+        <ul class="tags accent">
+          <li>Python · NumPy / SciPy</li><li>Self-consistent mean-field / Hartree–Fock</li>
+          <li>Linear-response theory</li><li>Berry curvature &amp; Chern numbers</li>
+          <li>Numerical convergence discipline</li><li>SLURM / NERSC HPC</li>
+        </ul>
+
+        <div class="callout"><strong>Status.</strong> A computational-methods showcase — the research
+          physics results are unpublished and deliberately omitted. Code to be released later.</div>
+
+        <div class="link-row">
+          <span class="btn disabled" aria-disabled="true">Code — coming soon</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="mailto:wenqinchenphy@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-note">© 2026 Wenqin Chen</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

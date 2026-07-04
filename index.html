@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wenqin Chen — Computational Physicist · ML for Quantum Materials</title>
+  <meta name="description" content="Physics PhD candidate (UW) working on machine learning and many-body theory for quantum materials — neural quantum states, mean-field solvers, quantum geometry, and Dirac-material phonon magnetism." />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">Wenqin Chen<span class="dot">.</span></a>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#publications">Publications</a>
+          <a href="assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Computational Physicist</p>
+        <h1>Wenqin&nbsp;Chen</h1>
+        <p class="tagline">Machine learning &amp; many-body theory for quantum materials</p>
+        <p class="intro">
+          I build computational and machine-learning models for hard problems in quantum matter —
+          from transformer neural networks that solve the quantum many-body problem to the theory
+          behind new magnetic and superconducting states. Physics PhD candidate at the University of
+          Washington, moving to industry in 2027.
+        </p>
+        <div class="hero-links">
+          <a class="btn primary" href="assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn" href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="mailto:wenqinchenphy@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Selected Work</p>
+          <h2>Projects</h2>
+          <p class="lead">Four projects spanning machine learning, large-scale scientific computing, and
+            theory — each with a short technical summary and a figure.</p>
+        </div>
+
+        <div class="grid">
+          <!-- 01 NQS -->
+          <a class="card" href="projects/neural-quantum-states.html">
+            <div class="card-fig"><img src="assets/figures/nqs.png" alt="NQS energy converging to exact-diagonalization precision" loading="lazy" /></div>
+            <div class="card-body">
+              <span class="card-num">01 · Machine learning</span>
+              <h3 class="card-title">Neural Quantum States for Correlated Electrons</h3>
+              <p class="card-desc">A transformer wavefunction that solves the quantum many-body problem — optimized by variational Monte Carlo and validated to exact-diagonalization precision on GPUs.</p>
+              <ul class="tags"><li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li><li>GPU / HPC</li></ul>
+              <span class="card-more" style="margin-top:16px">View project →</span>
+            </div>
+          </a>
+
+          <!-- 02 HF -->
+          <a class="card" href="projects/hartree-fock-solver.html">
+            <div class="card-fig"><img src="assets/figures/hf.png" alt="Susceptibility of the 2D electron gas validated against the analytic Lindhard result" loading="lazy" /></div>
+            <div class="card-body">
+              <span class="card-num">02 · Scientific computing</span>
+              <h3 class="card-title">A Continuum Hartree–Fock Many-Body Solver</h3>
+              <p class="card-desc">A from-scratch self-consistent mean-field solver for interacting 2D electrons, built around a linear-response → instability → self-consistency diagnostic pipeline.</p>
+              <ul class="tags"><li>Python</li><li>Mean-field</li><li>Linear response</li><li>NERSC / SLURM</li></ul>
+              <span class="card-more" style="margin-top:16px">View project →</span>
+            </div>
+          </a>
+
+          <!-- 03 Cooper -->
+          <a class="card" href="projects/cooper-pairs.html">
+            <div class="card-fig"><img src="assets/figures/cooper.png" alt="Momentum-space quantum-geometry structure of a Cooper pair" loading="lazy" /></div>
+            <div class="card-body">
+              <span class="card-num">03 · Superconductivity theory</span>
+              <h3 class="card-title">Quantum Geometry of Cooper Pairs</h3>
+              <p class="card-desc">A first-author theory of how the quantum geometry of electron bands — Berry curvature and the quantum metric — sets the fundamental size of a Cooper pair.</p>
+              <ul class="tags"><li>Quantum geometry</li><li>Berry curvature</li><li>Superconductivity</li><li>First author</li></ul>
+              <span class="card-more" style="margin-top:16px">View project →</span>
+            </div>
+          </a>
+
+          <!-- 04 Dirac -->
+          <a class="card" href="projects/dirac-phonon.html">
+            <div class="card-fig"><img src="assets/figures/dirac.png" alt="Predicted giant phonon magnetic moment growing with doping in a Dirac semimetal" loading="lazy" /></div>
+            <div class="card-body">
+              <span class="card-num">04 · Condensed-matter theory</span>
+              <h3 class="card-title">Giant Phonon Magnetism in Dirac Materials</h3>
+              <p class="card-desc">Two first-author theories (Physical Review B) explaining why lattice vibrations acquire large magnetic moments in Dirac semimetals — now guiding experiments.</p>
+              <ul class="tags"><li>Electron–phonon</li><li>Berry curvature</li><li>Theory → experiment</li><li>First author</li></ul>
+              <span class="card-more" style="margin-top:16px">View project →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="wrap about">
+        <p class="eyebrow">About</p>
+        <h2>Physics PhD → industry</h2>
+        <p class="lead">
+          I'm a physics PhD candidate at the University of Washington (advisors Di&nbsp;Xiao and
+          Ting&nbsp;Cao), graduating in 2027. My work spans deep learning for quantum many-body systems
+          and the theory of magnetism, transport, and superconductivity in quantum materials.
+        </p>
+        <ul>
+          <li>First-author papers in <em>Physical Review B</em>; co-author in <em>Physical Review Letters</em> and <em>Nature Materials</em>; 180+ citations.</li>
+          <li>Research internships at Los Alamos National Laboratory (Theoretical Division) and Lawrence Berkeley National Laboratory.</li>
+          <li>5+ years of Python scientific computing, large-scale numerical modeling, and GPU/HPC (JAX, NumPy/SciPy, SLURM).</li>
+          <li>Now bringing that toolkit — deep learning, large-scale computation, and numerical modeling — to industry.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+      <div class="wrap about">
+        <p class="eyebrow">Publications</p>
+        <h2>Selected papers</h2>
+        <p class="lead">8 papers · 180+ citations · in journals including <em>Nature Materials</em>,
+          <em>Physical Review Letters</em>, and <em>Physical Review B</em>. Full list on
+          <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        <ul class="pub-list">
+          <li>
+            <div class="pub-title">Quantum Geometric Quadrupole of Cooper Pairs</div>
+            <div class="pub-meta">First author · <a href="https://arxiv.org/abs/2605.03133" target="_blank" rel="noopener">arXiv:2605.03133</a> (2026)</div>
+          </li>
+          <li>
+            <div class="pub-title">Gauge theory of giant phonon magnetic moment in doped Dirac semimetals</div>
+            <div class="pub-meta">First author · <a href="https://doi.org/10.1103/PhysRevB.111.035126" target="_blank" rel="noopener">Phys. Rev. B 111, 035126</a> (2025)</div>
+          </li>
+          <li>
+            <div class="pub-title">Geometric Origin of Phonon Magnetic Moment in Dirac Materials</div>
+            <div class="pub-meta">First author · <a href="https://arxiv.org/abs/2505.09732" target="_blank" rel="noopener">arXiv:2505.09732</a> (2025)</div>
+          </li>
+          <li>
+            <div class="pub-title">Non-Abelian statistics of Majorana zero modes in the presence of an Andreev bound state</div>
+            <div class="pub-meta">First author · <a href="https://doi.org/10.1103/PhysRevB.105.054507" target="_blank" rel="noopener">Phys. Rev. B 105, 054507</a> (2022)</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="mailto:wenqinchenphy@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-note">© 2026 Wenqin Chen</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
