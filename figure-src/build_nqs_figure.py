@@ -69,7 +69,7 @@ axA.quiver(X[::qs, ::qs], Y[::qs, ::qs], mx[::qs, ::qs], my[::qs, ::qs], color="
 o = np.array([2.2, 0.6]); cell = np.array([o, o + a1, o + a1 + a2, o + a2, o])
 axA.plot(cell[:, 0], cell[:, 1], color="#00a651", lw=2.4, ls="--", alpha=0.95, zorder=4)
 axA.set_aspect("equal"); axA.set_xlim(xs.min(), xs.max()); axA.set_ylim(ys.min(), ys.max())
-axA.set_xlabel("$x$  (Bohr)"); axA.set_ylabel("$y$  (Bohr)")
+axA.set_xlabel("$x$  (Bohr radii)"); axA.set_ylabel("$y$  (Bohr radii)")
 axA.set_title("Spin texture from the trained network", fontweight="bold", fontsize=12.5, pad=9)
 cb = fig.colorbar(pc, ax=axA, fraction=0.046, pad=0.03)
 cb.set_ticks([-vmax, 0, vmax]); cb.set_ticklabels([f"$-${vmax:.3f}", "0", f"{vmax:.3f}"])
