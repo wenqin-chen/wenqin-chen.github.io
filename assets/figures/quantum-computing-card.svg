@@ -1,0 +1,44 @@
+<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two Majorana zero modes glowing at the ends of a topological-superconductor nanowire, over a faint braid">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#0f1a33"/>
+      <stop offset="1" stop-color="#1e2f52"/>
+    </linearGradient>
+    <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9ad7ea"/>
+      <stop offset="0.5" stop-color="#4aa6cc"/>
+      <stop offset="1" stop-color="#9ad7ea"/>
+    </linearGradient>
+    <radialGradient id="mz" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff8a6b"/>
+      <stop offset="0.32" stop-color="#f0563f" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f0563f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="640" height="360" fill="url(#bg)"/>
+
+  <!-- faint braid ribbons in the background -->
+  <g fill="none" stroke-width="15" stroke-linecap="round" opacity="0.11">
+    <path d="M150 296 C 300 214 340 150 496 70" stroke="#9ad7ea"/>
+    <path d="M150 70 C 300 152 340 210 496 296" stroke="#ff8a6b"/>
+  </g>
+
+  <!-- topological-superconductor nanowire -->
+  <rect x="150" y="169" width="346" height="22" rx="11" fill="url(#wire)"/>
+  <!-- spin-orbit ticks -->
+  <g stroke="#0f1a33" stroke-width="2.2" opacity="0.4">
+    <line x1="212" y1="172" x2="212" y2="188"/><line x1="268" y1="172" x2="268" y2="188"/>
+    <line x1="323" y1="172" x2="323" y2="188"/><line x1="378" y1="172" x2="378" y2="188"/>
+    <line x1="434" y1="172" x2="434" y2="188"/>
+  </g>
+
+  <!-- Majorana zero modes at the two ends -->
+  <circle cx="150" cy="180" r="66" fill="url(#mz)"/>
+  <circle cx="496" cy="180" r="66" fill="url(#mz)"/>
+  <circle cx="150" cy="180" r="12" fill="#ffc3b0"/>
+  <circle cx="496" cy="180" r="12" fill="#ffc3b0"/>
+
+  <text x="150" y="126" text-anchor="middle" fill="#ffd8cc" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="27">γ₁</text>
+  <text x="496" y="126" text-anchor="middle" fill="#ffd8cc" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="27">γ₂</text>
+</svg>

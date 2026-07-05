@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Braiding Majorana Zero Modes — Wenqin Chen</title>
+  <meta name="description" content="Two theory papers — one first-author (Physical Review B) — on encoding and braiding Majorana zero modes in topological-superconductor nanowires, the building blocks of a fault-tolerant topological qubit." />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Wenqin Chen<span class="dot">.</span></a>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="../#projects">Projects</a>
+          <a href="../#about">About</a>
+          <a href="../#publications">Publications</a>
+          <a href="../assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <a class="back" href="../#projects">← All projects</a>
+
+      <div class="project-hero">
+        <p class="eyebrow">Quantum computing · Topological qubits</p>
+        <h1>Braiding Majorana Zero Modes</h1>
+        <p class="lead">Two theory papers — one first-author — on encoding and braiding Majorana zero modes
+          in topological-superconductor nanowires: the building blocks of a fault-tolerant topological qubit.</p>
+        <ul class="meta-row">
+          <li><b>Role</b> — First author (PRB) · co-author (SCPMA)</li>
+          <li><b>Venue</b> — Phys. Rev. B 105 (2022) · Sci. China Phys. Mech. Astron. 64 (2021)</li>
+          <li><b>Method</b> — Bogoliubov–de Gennes theory</li>
+        </ul>
+      </div>
+
+      <!-- ============ DIAGRAM 1 · topological superconductor + Majorana end modes ============ -->
+      <figure class="project-figure diagram-fig">
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 900 232" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+            <title>A topological-superconductor nanowire with a Majorana zero mode at each end</title>
+            <desc>A semiconductor nanowire, proximitized by an s-wave superconductor and driven topological by spin–orbit coupling and a Zeeman field, binds one Majorana zero mode at each end. The pair stores one qubit in their shared fermion parity.</desc>
+
+            <text x="450" y="30" text-anchor="middle" font-size="12.5" fill="var(--muted)">the topological-superconductor recipe:  spin–orbit coupling  +  s-wave superconductivity  +  Zeeman field</text>
+
+            <!-- proximity superconductor slab -->
+            <rect x="185" y="120" width="530" height="26" rx="6" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.4"/>
+            <text x="450" y="137" text-anchor="middle" font-size="10.5" fill="var(--muted)">proximity s-wave superconductor</text>
+
+            <!-- semiconductor nanowire -->
+            <rect x="185" y="88" width="530" height="30" rx="9" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.6"/>
+            <text x="450" y="107" text-anchor="middle" font-size="11" fill="var(--ink)">semiconductor nanowire</text>
+
+            <!-- Majorana zero modes at the two ends -->
+            <circle cx="185" cy="103" r="25" fill="var(--accent-soft)"/>
+            <circle cx="715" cy="103" r="25" fill="var(--accent-soft)"/>
+            <circle cx="185" cy="103" r="8.5" fill="var(--accent)"/>
+            <circle cx="715" cy="103" r="8.5" fill="var(--accent)"/>
+            <text x="185" y="68" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="17" font-weight="700" fill="var(--accent)">γ<tspan font-size="11" dy="3">L</tspan></text>
+            <text x="715" y="68" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="17" font-weight="700" fill="var(--accent)">γ<tspan font-size="11" dy="3">R</tspan></text>
+
+            <!-- topological-SC brace -->
+            <path d="M185 159 L185 166 L715 166 L715 159" fill="none" stroke="var(--line-2)" stroke-width="1.4"/>
+            <text x="450" y="186" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">topological superconductor</text>
+
+            <text x="450" y="214" text-anchor="middle" font-size="11" fill="var(--muted)">one qubit = the joint fermion parity of the pair (γ<tspan font-size="8" dy="2">L</tspan><tspan dy="-2">,</tspan> γ<tspan font-size="8" dy="2">R</tspan><tspan dy="-2">)</tspan> — stored non-locally, at opposite ends</text>
+          </svg>
+        </div>
+      </figure>
+      <p class="figcaption">A topological superconductor — a semiconductor nanowire with strong spin–orbit coupling,
+        proximity-induced superconductivity, and a magnetic (Zeeman) field — binds a <strong>Majorana zero mode</strong>
+        at each end (γ<sub>L</sub>, γ<sub>R</sub>). Each is "half" of an electron; together they hold one qubit in their
+        shared fermion parity, so no local disturbance at either end can read or corrupt it.</p>
+
+      <div class="prose">
+        <p>Quantum computers are fragile: local noise corrupts the delicate states they compute with, and most
+          architectures fight this with heavy layers of error correction. <strong>Topological quantum computing</strong>
+          takes a different route — it stores information <em>non-locally</em>, so protection is built into the physics
+          rather than patched on afterward.</p>
+
+        <p>The building block is the <strong>Majorana zero mode (MZM)</strong> — an emergent, zero-energy excitation
+          that appears in pairs at the ends of a <strong>topological superconductor</strong> (diagram above). Each is
+          "half" of an ordinary electron; a widely separated pair shares one fermion state, so a single qubit lives in
+          the <em>joint parity</em> of two modes at opposite ends of a wire. No local measurement on either end alone
+          can tell which state the qubit is in — that is where the noise-protection comes from.</p>
+
+        <p>What makes them <em>compute</em> is how you manipulate them. Exchanging — <strong>braiding</strong> — two
+          Majoranas applies a quantum gate that depends only on the <em>topology</em> of the exchange, not on how fast
+          or how precisely you do it. Crucially the exchanges do not commute: they are <strong>non-Abelian</strong>, so
+          braids generate genuine, intrinsically robust quantum gates.</p>
+      </div>
+
+      <!-- ============ DIAGRAM 2 · non-Abelian braiding worldlines ============ -->
+      <figure class="project-figure diagram-fig">
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+            <title>Non-Abelian braiding of Majorana zero modes shown as worldlines</title>
+            <desc>Four Majorana worldlines drawn in space (horizontal) and time (vertical). The middle two are exchanged, crossing over and under — a braid that applies a topological quantum gate. Because different orders of braids do not commute, the statistics are non-Abelian.</desc>
+            <defs>
+              <marker id="tA" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+            </defs>
+
+            <text x="450" y="30" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Braiding: exchange two Majoranas → a topological gate</text>
+
+            <!-- time axis -->
+            <line x1="70" y1="258" x2="70" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#tA)"/>
+            <text x="58" y="165" text-anchor="middle" font-size="11.5" fill="var(--muted)" transform="rotate(-90 58 165)">time</text>
+
+            <!-- outer, un-braided worldlines -->
+            <line x1="215" y1="255" x2="215" y2="78" stroke="var(--ink-2)" stroke-width="2.4"/>
+            <line x1="695" y1="255" x2="695" y2="78" stroke="var(--ink-2)" stroke-width="2.4"/>
+
+            <!-- braided pair: gamma3 (under, teal) then gamma2 (over, accent) -->
+            <path d="M535 255 L535 188 C535 152 375 148 375 112 L375 78" fill="none" stroke="#2f8fb3" stroke-width="3"/>
+            <!-- erase a gap in the under-strand where the over-strand crosses -->
+            <path d="M535 255 L535 188 C535 152 375 148 375 112 L375 78" fill="none" stroke="var(--card)" stroke-width="9" stroke-dasharray="0 132 16 200"/>
+            <path d="M375 255 L375 188 C375 152 535 148 535 112 L535 78" fill="none" stroke="var(--accent)" stroke-width="3"/>
+
+            <!-- mode dots + labels at the start (bottom) -->
+            <g>
+              <circle cx="215" cy="255" r="6" fill="var(--ink-2)"/>
+              <circle cx="375" cy="255" r="6" fill="var(--accent)"/>
+              <circle cx="535" cy="255" r="6" fill="#2f8fb3"/>
+              <circle cx="695" cy="255" r="6" fill="var(--ink-2)"/>
+            </g>
+            <g font-family="var(--serif)" font-style="italic" font-size="15" text-anchor="middle" fill="var(--ink)">
+              <text x="215" y="285">γ<tspan font-size="10" dy="3">1</tspan></text>
+              <text x="375" y="285">γ<tspan font-size="10" dy="3">2</tspan></text>
+              <text x="535" y="285">γ<tspan font-size="10" dy="3">3</tspan></text>
+              <text x="695" y="285">γ<tspan font-size="10" dy="3">4</tspan></text>
+            </g>
+            <text x="455" y="185" text-anchor="middle" font-size="11" fill="var(--muted)">exchange γ<tspan font-size="8" dy="2">2</tspan><tspan dy="-2"> ↔ </tspan>γ<tspan font-size="8" dy="2">3</tspan></text>
+
+            <!-- right-hand annotation -->
+            <text x="770" y="120" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="19" fill="var(--accent)">U₂₃</text>
+            <text x="770" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">a robust,</text>
+            <text x="770" y="160" text-anchor="middle" font-size="10.5" fill="var(--muted)">topological gate</text>
+          </svg>
+        </div>
+      </figure>
+      <p class="figcaption">Braiding as <strong>worldlines</strong>: time runs upward, position runs across. Exchanging
+        Majoranas γ<sub>2</sub> and γ<sub>3</sub> (one strand passing over the other) applies a quantum gate that depends
+        only on <em>which</em> modes are swapped and in <em>what order</em> — not on timing or path. Different orders give
+        different results (the gates don't commute — <strong>non-Abelian</strong>), which is exactly what lets braids compute.</p>
+
+      <div class="prose">
+        <p>The hard part is physics, not wiring. To build a real topological qubit you have to (i) engineer a genuine
+          topological superconductor, and (ii) braid its Majoranas robustly — all while telling a <em>true</em> Majorana
+          apart from mundane look-alikes such as trivial <strong>Andreev bound states</strong>, which produce nearly the
+          same experimental signatures. I worked on both problems in two theory papers, sketched below.</p>
+      </div>
+
+      <!-- ============ DIAGRAM 3 · the two device proposals ============ -->
+      <figure class="project-figure diagram-fig">
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+            <title>The two device proposals: a modified tetron with an Andreev bound state, and a minimal two-wire plus quantum-dot braiding setup</title>
+            <desc>Left, paper one: four coupled nanowires with gate-controlled braiding, made robust to a trivial Andreev bound state by a geometric-phase cancellation. Right, paper two: two nanowires coupled through a single quantum dot, braided by looping the couplings and read out as an electric current.</desc>
+            <defs>
+              <marker id="dm3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+            </defs>
+
+            <line x1="450" y1="52" x2="450" y2="300" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="3 4"/>
+
+            <!-- ===== PANEL A · Paper 1 ===== -->
+            <text x="228" y="30" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">Paper 1 · first author</text>
+            <text x="228" y="47" text-anchor="middle" font-size="10.5" fill="var(--muted)">braiding stays robust despite an Andreev bound state</text>
+
+            <!-- four coupled nanowires + trivial-SC backbone -->
+            <rect x="130" y="132" width="52" height="9" rx="4" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.3"/>
+            <rect x="274" y="132" width="52" height="9" rx="4" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.3"/>
+            <rect x="130" y="188" width="52" height="9" rx="4" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.3"/>
+            <rect x="274" y="188" width="52" height="9" rx="4" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.3"/>
+            <!-- central trivial superconductor backbone -->
+            <rect x="182" y="120" width="92" height="89" rx="6" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.3"/>
+            <text x="228" y="168" text-anchor="middle" font-size="9" fill="var(--muted)">trivial</text>
+            <text x="228" y="179" text-anchor="middle" font-size="9" fill="var(--muted)">SC</text>
+
+            <!-- Majorana end modes (accent) -->
+            <g fill="var(--accent)">
+              <circle cx="130" cy="136" r="5.5"/><circle cx="326" cy="136" r="5.5"/>
+              <circle cx="130" cy="192" r="5.5"/><circle cx="326" cy="192" r="5.5"/>
+            </g>
+            <!-- the Andreev bound state: a trivial pair of close modes on the top wire -->
+            <circle cx="150" cy="136" r="4.5" fill="none" stroke="#2f8fb3" stroke-width="1.8"/>
+            <circle cx="162" cy="136" r="4.5" fill="none" stroke="#2f8fb3" stroke-width="1.8"/>
+            <text x="156" y="118" text-anchor="middle" font-size="9.5" fill="#2f8fb3">ABS (look-alike)</text>
+
+            <!-- gates -->
+            <g fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.2">
+              <rect x="218" y="222" width="20" height="12" rx="3"/>
+            </g>
+            <text x="228" y="250" text-anchor="middle" font-size="9.5" fill="var(--muted)">gate control</text>
+
+            <text x="228" y="282" text-anchor="middle" font-size="10.5" fill="var(--ink)">geometric-phase (spin-echo)</text>
+            <text x="228" y="296" text-anchor="middle" font-size="10.5" fill="var(--ink)">cancellation → robust statistics</text>
+
+            <!-- ===== PANEL B · Paper 2 ===== -->
+            <text x="672" y="30" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">Paper 2 · co-author</text>
+            <text x="672" y="47" text-anchor="middle" font-size="10.5" fill="var(--muted)">the minimal braiding cell: two wires + one quantum dot</text>
+
+            <!-- two topological-SC nanowires -->
+            <rect x="520" y="108" width="120" height="12" rx="6" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.4"/>
+            <rect x="520" y="182" width="120" height="12" rx="6" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.4"/>
+            <g fill="var(--accent)">
+              <circle cx="520" cy="114" r="5.5"/><circle cx="640" cy="114" r="5.5"/>
+              <circle cx="520" cy="188" r="5.5"/><circle cx="640" cy="188" r="5.5"/>
+            </g>
+
+            <!-- quantum dot coupling the inner ends -->
+            <circle cx="672" cy="151" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <text x="672" y="155" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--accent)">dot</text>
+            <line x1="647" y1="118" x2="661" y2="140" stroke="var(--muted)" stroke-width="1.4"/>
+            <line x1="647" y1="188" x2="661" y2="162" stroke="var(--muted)" stroke-width="1.4"/>
+            <text x="628" y="132" text-anchor="middle" font-size="10" font-style="italic" fill="var(--muted)">t₁</text>
+            <text x="628" y="178" text-anchor="middle" font-size="10" font-style="italic" fill="var(--muted)">t₂</text>
+
+            <!-- parameter-space loop (Berry phase) -->
+            <ellipse cx="748" cy="132" rx="20" ry="15" fill="none" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#dm3)"/>
+            <text x="748" y="102" text-anchor="middle" font-size="9.5" fill="var(--muted)">loop couplings</text>
+            <text x="748" y="163" text-anchor="middle" font-size="9" fill="var(--muted)">→ Berry phase</text>
+
+            <!-- parity → current readout -->
+            <circle cx="748" cy="205" r="13" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+            <text x="748" y="209" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink-2)">A</text>
+            <line x1="690" y1="188" x2="735" y2="205" stroke="var(--muted)" stroke-width="1.4"/>
+            <text x="672" y="285" text-anchor="middle" font-size="10.5" fill="var(--ink)">parity flip → measurable</text>
+            <text x="672" y="299" text-anchor="middle" font-size="10.5" fill="var(--ink)">electric current</text>
+          </svg>
+        </div>
+      </figure>
+      <p class="figcaption"><strong>Left (Paper 1):</strong> a modified <em>tetron</em> — four gate-controlled nanowires —
+        with a trivial Andreev bound state present; a geometric-phase cancellation keeps the braiding statistics robust.
+        <strong>Right (Paper 2):</strong> the smallest device that can braid — two wires coupled through one quantum dot,
+        braided by looping the couplings (a Berry phase) and read out as an electric current.</p>
+
+      <div class="prose">
+        <h2>The two papers</h2>
+
+        <p><strong>Non-Abelian statistics in the presence of an Andreev bound state</strong>
+          (first author, <em>Phys. Rev. B</em> 105, 054507). I studied braiding in a <strong>modified tetron</strong> —
+          four coupled superconductor–semiconductor nanowires with gate control — but with a realistic contaminant
+          present: a trivial <strong>Andreev bound state</strong>, the most common experimental mimic of a Majorana,
+          modeled as a pair of weakly coupled Majoranas. The ABS hybridizes with the braided modes and injects a
+          spurious, braiding-time-<em>dependent</em> phase that would spoil the statistics. I showed that a
+          <strong>geometric-phase (spin-echo-like) cancellation</strong> removes that dynamical phase and recovers
+          braiding-time-<em>independent</em> non-Abelian statistics even with the contaminant present — and that the same
+          gate-tunable coupling can be turned into controllable <strong>single-qubit rotations</strong>.</p>
+
+        <p><strong>A minimal setup for non-Abelian braiding</strong>
+          (co-developed, second author, <em>Sci. China Phys. Mech. Astron.</em> 64, 117811). This proposes the smallest
+          device that can braid: two topological-superconductor nanowires coupled through a single <strong>quantum dot</strong>.
+          Instead of physically dragging Majoranas around a two-dimensional network, braiding is done by adiabatically
+          tracing a <strong>closed loop in the dot's coupling-parameter space</strong> — a geometric (Berry-phase) braid.
+          The operation flips the local fermion parity, which converts into a measurable <strong>electric current</strong>:
+          an electrical read-out of non-Abelian statistics.</p>
+
+        <p style="font-size:.94rem;color:var(--muted);border-left:2px solid var(--line-2);padding-left:16px">This was my
+          earliest research area — a first, hands-on engagement (one first-author paper, one co-authored) with the core
+          problems of topological quantum computing: realizing Majorana modes, braiding them robustly, and separating
+          true Majoranas from trivial look-alikes.</p>
+
+        <h2>What it demonstrates</h2>
+        <ul class="tags accent">
+          <li>Topological superconductivity</li><li>Majorana zero modes</li>
+          <li>Non-Abelian statistics</li><li>Bogoliubov–de Gennes theory</li>
+          <li>Berry / geometric phase</li><li>Mesoscopic transport</li>
+          <li>First-author paper</li>
+        </ul>
+
+        <div class="link-row">
+          <a class="btn primary" href="https://doi.org/10.1103/PhysRevB.105.054507" target="_blank" rel="noopener">Phys. Rev. B 105, 054507</a>
+          <a class="btn" href="https://arxiv.org/abs/2005.00735" target="_blank" rel="noopener">arXiv:2005.00735</a>
+          <a class="btn" href="https://arxiv.org/abs/2104.09000" target="_blank" rel="noopener">arXiv:2104.09000 (SCPMA)</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="mailto:wenqinchenphy@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-note">© 2026 Wenqin Chen</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
