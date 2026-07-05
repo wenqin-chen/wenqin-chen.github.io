@@ -181,6 +181,9 @@ p { margin: 0 0 1rem; }
 .figure-row .cell { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
 .figure-row img { width: 100%; display: block; }
 @media (max-width: 560px) { .figure-row { gap: 8px; } }
+/* inline SVG pipeline diagram — scrolls within its own frame on narrow screens */
+.diagram-wrap { overflow-x: auto; }
+.diagram-wrap svg { display: block; width: 100%; min-width: 620px; height: auto; }
 .prose { max-width: var(--prose); }
 .prose h2 { margin-top: 2.4rem; }
 .prose ul { padding-left: 1.15em; }
