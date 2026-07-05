@@ -201,9 +201,13 @@ p { margin: 0 0 1rem; }
 
 /* ---------- publications / about ---------- */
 .about { max-width: var(--prose); }
-.about-photo { display: flex; gap: 34px; align-items: flex-start; }
-.about-photo .headshot { flex: none; width: 144px; height: 144px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
-@media (max-width: 620px) { .about-photo { flex-direction: column; gap: 20px; } .about-photo .headshot { width: 120px; height: 120px; } }
+.headshot { border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); flex: none; }
+.hero-head { display: flex; align-items: center; gap: 28px; margin-bottom: .2rem; }
+.hero-head .headshot { width: 128px; height: 128px; }
+.hero-facts { list-style: none; padding: 0; margin: 1.5rem 0 0; max-width: var(--prose); }
+.hero-facts li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
+.hero-facts li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 620px) { .hero-head { gap: 18px; } .hero-head .headshot { width: 92px; height: 92px; } }
 .about ul { list-style: none; padding: 0; margin: 1rem 0 0; }
 .about ul li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
 .about ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
