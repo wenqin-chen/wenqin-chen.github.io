@@ -50,6 +50,18 @@
         four candidate states, each optimized by natural-gradient (MinSR) variational Monte Carlo,
         converging to their energy plateaus.</p>
 
+      <div class="prose">
+        <p>The quantum many-body problem — finding the ground state of many interacting electrons — is
+          exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
+          wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
+
+        <p>I built a continuum NQS solver from the ground up: a <strong>Psiformer / transformer
+          wavefunction</strong> for a two-dimensional multi-orbital electron gas with spin–orbit coupling
+          and long-range Coulomb interaction, optimized by variational Monte Carlo with
+          <strong>natural-gradient (MinSR)</strong> updates and Ewald-summed interactions, running on
+          H200 GPUs and HPC clusters.</p>
+      </div>
+
       <figure class="project-figure diagram-fig">
         <div class="diagram-wrap">
           <svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" font-family="var(--sans)">
@@ -147,20 +159,9 @@
     </svg>
         </div>
       </figure>
-      <p class="figcaption">The full pipeline — a transformer wavefunction (left) trained by variational
-        Monte Carlo with MinSR natural-gradient updates (right). Learnable components are shown in red,
-        fixed physics in grey.</p>
+      <p class="figcaption"><em>In plain terms — a transformer defines the wavefunction, and the training loop tunes it to minimize the energy.</em> The full pipeline: a transformer wavefunction (left) trained by variational Monte Carlo with MinSR natural-gradient updates (right). Learnable components in red, fixed physics in grey.</p>
 
       <div class="prose">
-        <p>The quantum many-body problem — finding the ground state of many interacting electrons — is
-          exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
-          wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
-
-        <p>I built a continuum NQS solver from the ground up: a <strong>Psiformer / transformer
-          wavefunction</strong> for a two-dimensional multi-orbital electron gas with spin–orbit coupling
-          and long-range Coulomb interaction, optimized by variational Monte Carlo with
-          <strong>natural-gradient (MinSR)</strong> updates and Ewald-summed interactions, running on
-          H200 GPUs and HPC clusters.</p>
 
         <p>The project is structured as an <strong>eleven-notebook ladder</strong> that adds one piece of
           physics at a time and validates each stage against an exact reference — exact diagonalization
