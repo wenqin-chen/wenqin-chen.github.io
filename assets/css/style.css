@@ -184,6 +184,7 @@ p { margin: 0 0 1rem; }
 /* inline SVG pipeline diagram — scrolls within its own frame on narrow screens */
 .diagram-wrap { overflow-x: auto; }
 .diagram-wrap svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.diagram-fig { max-width: 900px; margin-inline: auto; }   /* a touch smaller than full-width figures */
 .prose { max-width: var(--prose); }
 .prose h2 { margin-top: 2.4rem; }
 .prose ul { padding-left: 1.15em; }
