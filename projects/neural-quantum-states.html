@@ -66,7 +66,7 @@
         <div class="diagram-wrap">
           <svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" font-family="var(--sans)">
       <title>Neural quantum state: architecture and training pipeline</title>
-      <desc>The determinant matrix equals the Hartree-Fock spin-orbitals times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spin-orbitals come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
+      <desc>The determinant matrix equals the Hartree-Fock spinor envelope times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spinor envelope come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
       <defs>
         <marker id="dM" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
         <marker id="dA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
@@ -92,10 +92,9 @@
       <text x="230" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">det</text>
       <line x1="228" y1="180" x2="228" y2="154" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
 
-      <!-- ===== product line:  spin-orbitals  ⊗  ( 1 + backflow ) ===== -->
+      <!-- ===== product line:  spinor envelope  ⊗  ( 1 + backflow ) ===== -->
       <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
-      <text x="100" y="200" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spin-orbitals</text>
-      <text x="100" y="213" text-anchor="middle" font-size="9" fill="var(--muted)">envelope</text>
+      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor envelope</text>
 
       <circle cx="188" cy="202" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
       <text x="188" y="206.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">×</text>
@@ -108,7 +107,7 @@
 
       <text x="399" y="216" font-size="42" fill="var(--ink-2)">)</text>
 
-      <!-- left branch: Hartree-Fock -> spin-orbitals -->
+      <!-- left branch: Hartree-Fock -> spinor envelope -->
       <rect x="40" y="254" width="120" height="36" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
       <text x="100" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Hartree–Fock</text>
       <line x1="100" y1="254" x2="100" y2="225" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
