@@ -169,6 +169,25 @@
           scaled-up production run at 18 electrons, where several competing candidate states are each
           optimized to a tight energy plateau.</p>
 
+        <h2>My contribution</h2>
+        <p>Neural quantum states are an established idea — I build directly on DeepMind's
+          <strong>FermiNet</strong> and <strong>Psiformer</strong>. The hard part of this kind of work
+          isn't the network; it's making it <em>trainable and correct</em> for one specific, difficult
+          problem. That's what I added:</p>
+        <ul>
+          <li><strong>A training-stability method.</strong> At this problem's scale the optimizer gets
+            trapped in the wrong solution — a common failure mode for these networks. Initializing the
+            network from a cheap mean-field (Hartree–Fock) starting point reliably steers it into the
+            right basin, turning an otherwise-stuck run into one that beats the mean-field baseline, on a
+            ladder validated against exact diagonalization.</li>
+          <li><strong>A harder problem class.</strong> I extended these solvers from spin-simple systems
+            to ones with strong <strong>spin–orbit coupling</strong> and multiple orbitals — the
+            ingredients the magnetism I study actually requires.</li>
+          <li><strong>Conclusions scoped to the evidence.</strong> Every stage is checked against an
+            exact reference, and the physics verdict is stated only as strongly as the data support — a
+            candidate ordered phase turns out to be only marginally stable, and is reported as such.</li>
+        </ul>
+
         <h2>What it demonstrates</h2>
         <ul class="tags accent">
           <li>JAX</li><li>Transformers / attention</li><li>Variational Monte Carlo</li>
