@@ -52,9 +52,9 @@
 
       <figure class="project-figure diagram-fig">
         <div class="diagram-wrap">
-          <svg viewBox="0 0 980 434" xmlns="http://www.w3.org/2000/svg" role="img" font-family="var(--sans)">
+          <svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" font-family="var(--sans)">
       <title>Neural quantum state: architecture and training pipeline</title>
-      <desc>Left, the Psiformer wavefunction: a single per-electron token stream through transformer blocks to a backflow correction, combined by tensor product with a Hartree-Fock-warm-started spinor-orbital envelope side-branch, into a single Slater determinant. Right, the VMC/MinSR training loop.</desc>
+      <desc>The determinant matrix equals the Hartree-Fock spinor orbitals times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spinor orbitals come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
       <defs>
         <marker id="dM" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
         <marker id="dA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
@@ -66,81 +66,78 @@
         <rect x="462" y="12" width="17" height="13" rx="3" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.4"/><text x="485" y="22">fixed</text>
         <rect x="540" y="12" width="17" height="13" rx="3" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="3 2"/><text x="563" y="22">input</text>
       </g>
-      <text x="196" y="52" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">① Wavefunction · Psiformer</text>
-      <text x="686" y="52" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">② Trained by VMC + MinSR</text>
-
-      <!-- ARCHITECTURE main column arrows -->
-      <g stroke="var(--muted)" stroke-width="1.7" fill="none">
-        <line x1="250" y1="374" x2="250" y2="360" marker-end="url(#dM)"/>
-        <line x1="250" y1="272" x2="250" y2="258" marker-end="url(#dM)"/>
-        <line x1="250" y1="222" x2="250" y2="210" marker-end="url(#dM)"/>
-        <line x1="250" y1="190" x2="250" y2="178" marker-end="url(#dM)"/>
-        <line x1="250" y1="142" x2="250" y2="128" marker-end="url(#dM)"/>
-      </g>
-
-      <!-- inputs -->
-      <rect x="160" y="374" width="180" height="46" rx="9" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="4 3"/>
-      <g fill="var(--accent)" opacity="0.85"><rect x="214" y="382" width="10" height="10" rx="2"/><rect x="227" y="382" width="10" height="10" rx="2"/><rect x="240" y="382" width="10" height="10" rx="2"/><rect x="253" y="382" width="10" height="10" rx="2"/><rect x="266" y="382" width="10" height="10" rx="2"/></g>
-      <text x="250" y="410" text-anchor="middle" font-size="11" fill="var(--muted)">electron positions + spins  (N)</text>
-
-      <!-- transformer x L -->
-      <rect x="166" y="272" width="168" height="86" rx="10" fill="none" stroke="var(--line-2)" stroke-width="1.3" stroke-dasharray="5 3"/>
-      <text x="342" y="320" font-size="12.5" font-weight="700" fill="var(--muted)">×L</text>
-      <rect x="180" y="278" width="140" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="250" y="298" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">self-attention</text>
-      <rect x="180" y="320" width="140" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="250" y="340" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">MLP</text>
-
-      <!-- backflow -->
-      <rect x="160" y="222" width="180" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="250" y="238" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">backflow</text>
-      <text x="250" y="250" text-anchor="middle" font-size="9.5" fill="var(--ink-2)">complex · zero-init</text>
-
-      <!-- envelope side-branch (left) -->
-      <rect x="28" y="176" width="114" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
-      <text x="85" y="194" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor orbitals</text>
-      <text x="85" y="208" text-anchor="middle" font-size="9.5" fill="var(--muted)">Hartree–Fock warm start</text>
-      <path d="M162 398 L 90 218" fill="none" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
-      <path d="M142 197 L 236 197" fill="none" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
-
-      <!-- tensor-product node -->
-      <circle cx="250" cy="200" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="250" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent)">×</text>
-
-      <!-- det -->
-      <rect x="160" y="142" width="180" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="250" y="158" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">det</text>
-      <text x="250" y="170" text-anchor="middle" font-size="9.5" fill="var(--ink-2)">single generalized determinant</text>
+      <text x="217" y="46" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">① Wavefunction · Psiformer</text>
+      <text x="690" y="46" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">② Trained by VMC + MinSR</text>
 
       <!-- Psi -->
-      <rect x="188" y="86" width="124" height="40" rx="10" fill="var(--card)" stroke="var(--accent)" stroke-width="2.6"/>
-      <text x="250" y="104" text-anchor="middle" font-family="var(--serif)" font-size="17" font-weight="700" fill="var(--ink)">Ψθ</text>
-      <text x="250" y="119" text-anchor="middle" font-size="9.5" fill="var(--muted)">wavefunction</text>
+      <rect x="172" y="60" width="116" height="40" rx="10" fill="var(--card)" stroke="var(--accent)" stroke-width="2.6"/>
+      <text x="230" y="80" text-anchor="middle" font-family="var(--serif)" font-size="17" font-weight="700" fill="var(--ink)">Ψθ</text>
+      <text x="230" y="93" text-anchor="middle" font-size="9" fill="var(--muted)">wavefunction</text>
+      <line x1="230" y1="116" x2="230" y2="102" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
 
-      <!-- LOOP arrows -->
-      <path d="M312 100 C 430 86 500 100 585 114" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
-      <path d="M672 136 C 762 156 812 180 840 206" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <!-- det -->
+      <rect x="165" y="118" width="130" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="230" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">det</text>
+      <line x1="228" y1="180" x2="228" y2="154" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- ===== product line:  spinor orbitals  ⊗  ( 1 + backflow ) ===== -->
+      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="100" y="200" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor orbitals</text>
+      <text x="100" y="213" text-anchor="middle" font-size="9" fill="var(--muted)">envelope</text>
+
+      <circle cx="188" cy="202" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="188" y="206.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">×</text>
+
+      <text x="205" y="216" font-size="42" fill="var(--ink-2)">(</text>
+      <text x="234" y="208" font-size="15" fill="var(--ink)">1 +</text>
+
+      <rect x="262" y="182" width="130" height="40" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="207" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">backflow</text>
+
+      <text x="399" y="216" font-size="42" fill="var(--ink-2)">)</text>
+
+      <!-- left branch: Hartree-Fock -> spinor orbitals -->
+      <rect x="40" y="254" width="120" height="36" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="100" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Hartree–Fock</text>
+      <line x1="100" y1="254" x2="100" y2="225" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- right branch: transformer -> backflow -->
+      <rect x="252" y="250" width="150" height="86" rx="10" fill="none" stroke="var(--line-2)" stroke-width="1.3" stroke-dasharray="5 3"/>
+      <text x="408" y="262" font-size="12.5" font-weight="700" fill="var(--muted)">×L</text>
+      <rect x="266" y="256" width="122" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">MLP</text>
+      <rect x="260" y="300" width="134" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="320" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">self-attention</text>
+      <line x1="327" y1="300" x2="327" y2="290" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+      <line x1="327" y1="256" x2="327" y2="225" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- inputs feeding both branches -->
+      <rect x="150" y="378" width="246" height="40" rx="9" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <g fill="var(--accent)" opacity="0.85"><rect x="247" y="386" width="10" height="10" rx="2"/><rect x="260" y="386" width="10" height="10" rx="2"/><rect x="273" y="386" width="10" height="10" rx="2"/><rect x="286" y="386" width="10" height="10" rx="2"/><rect x="299" y="386" width="10" height="10" rx="2"/></g>
+      <text x="273" y="410" text-anchor="middle" font-size="10.5" fill="var(--muted)">electron positions + spins  (N)</text>
+      <path d="M150 398 L 100 398 L 100 292" fill="none" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+      <line x1="327" y1="378" x2="327" y2="338" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- ===== LOOP ===== -->
+      <path d="M288 78 C 400 82 500 102 583 116" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <path d="M672 138 C 762 158 812 182 840 208" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
       <path d="M888 252 C 930 330 782 366 676 344" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
-      <path d="M560 344 C 452 352 374 302 346 244" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
-      <text x="430" y="318" font-size="12" font-weight="700" fill="var(--accent)">update θ</text>
+      <path d="M558 346 C 490 352 440 326 405 308" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <text x="500" y="320" font-size="12" font-weight="700" fill="var(--accent)">update θ</text>
 
-      <!-- center formula -->
-      <text x="690" y="228" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="14.5" fill="var(--ink-2)">E = ⟨Ψ|H|Ψ⟩ / ⟨Ψ|Ψ⟩</text>
-      <text x="690" y="246" text-anchor="middle" font-size="10.5" fill="var(--muted)">minimize — lower is better</text>
+      <text x="690" y="226" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="14.5" fill="var(--ink-2)">E = ⟨Ψ|H|Ψ⟩ / ⟨Ψ|Ψ⟩</text>
+      <text x="690" y="244" text-anchor="middle" font-size="10.5" fill="var(--muted)">minimize — lower is better</text>
 
-      <!-- sample cloud -->
-      <g fill="var(--accent)"><circle cx="614" cy="118" r="2.3"/><circle cx="628" cy="110" r="2"/><circle cx="642" cy="120" r="2.4"/><circle cx="622" cy="130" r="2"/><circle cx="636" cy="128" r="2.2"/><circle cx="650" cy="132" r="1.9"/><circle cx="608" cy="130" r="1.8"/><circle cx="632" cy="141" r="2.1"/><circle cx="646" cy="144" r="1.9"/></g>
-      <g fill="var(--ink-2)" opacity="0.55"><circle cx="620" cy="106" r="1.6"/><circle cx="656" cy="124" r="1.6"/><circle cx="602" cy="122" r="1.6"/><circle cx="638" cy="104" r="1.5"/><circle cx="660" cy="138" r="1.5"/><circle cx="616" cy="148" r="1.6"/></g>
-      <text x="631" y="172" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Sample configs</text>
-      <text x="631" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">r ~ |Ψ|²  ·  MCMC</text>
+      <g fill="var(--accent)"><circle cx="614" cy="120" r="2.3"/><circle cx="628" cy="112" r="2"/><circle cx="642" cy="122" r="2.4"/><circle cx="622" cy="132" r="2"/><circle cx="636" cy="130" r="2.2"/><circle cx="650" cy="134" r="1.9"/><circle cx="608" cy="132" r="1.8"/><circle cx="632" cy="143" r="2.1"/><circle cx="646" cy="146" r="1.9"/></g>
+      <g fill="var(--ink-2)" opacity="0.55"><circle cx="620" cy="108" r="1.6"/><circle cx="656" cy="126" r="1.6"/><circle cx="602" cy="124" r="1.6"/><circle cx="638" cy="106" r="1.5"/><circle cx="660" cy="140" r="1.5"/><circle cx="616" cy="150" r="1.6"/></g>
+      <text x="631" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Sample configs</text>
+      <text x="631" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">r ~ |Ψ|²  ·  MCMC</text>
 
-      <!-- skyrmion -->
       <circle cx="862" cy="232" r="28" fill="#cfe0f0"/><circle cx="862" cy="232" r="18" fill="#e8f0f7"/><circle cx="862" cy="232" r="9" fill="#d1483a"/>
       <g stroke="var(--ink-2)" stroke-width="1.3" opacity="0.7"><line x1="862" y1="212" x2="862" y2="205"/><line x1="881" y1="221" x2="887" y2="217"/><line x1="881" y1="243" x2="887" y2="247"/><line x1="862" y1="252" x2="862" y2="259"/><line x1="843" y1="243" x2="837" y2="247"/><line x1="843" y1="221" x2="837" y2="217"/></g>
       <text x="862" y="278" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Local energy</text>
       <text x="862" y="292" text-anchor="middle" font-size="10" fill="var(--muted)">Ψ⁻¹ H Ψ</text>
 
-      <!-- energy curve -->
       <line x1="602" y1="320" x2="602" y2="356" stroke="var(--line-2)" stroke-width="1.4"/>
       <line x1="602" y1="356" x2="660" y2="356" stroke="var(--line-2)" stroke-width="1.4"/>
       <polyline points="608,324 617,340 630,349 645,353 658,354" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
