@@ -4,63 +4,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wenqin Chen — Computational Physicist · ML for Quantum Materials</title>
-  <meta name="description" content="Physics PhD candidate (UW) working on machine learning and many-body theory for quantum materials — neural quantum states, mean-field solvers, quantum geometry, and Dirac-material phonon magnetism." />
+  <meta name="description" content="Physics PhD candidate (UW) working on machine learning and quantum many-body theory for quantum materials — neural quantum states, mean-field solvers, quantum geometry, and Dirac-material phonon magnetism." />
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="./">Wenqin Chen<span class="dot">.</span></a>
-      <nav class="nav">
-        <div class="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#publications">Publications</a>
-          <a href="assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
-        </div>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
-      </nav>
-    </div>
-  </header>
+  <div class="layout">
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="about">
-      <div class="wrap">
-        <div class="hero-head">
-          <div class="hero-head-text">
-            <p class="eyebrow">Computational Physicist</p>
-            <h1>Wenqin&nbsp;Chen</h1>
-            <p class="tagline">Machine learning &amp; quantum many-body theory</p>
-            <p class="intro">
-              I'm a physics PhD candidate at the University of Washington (advisors Di&nbsp;Xiao and
-              Ting&nbsp;Cao), graduating in 2027. I build computational and machine-learning models for
-              hard problems in quantum matter — from transformer neural networks that solve the quantum
-              many-body problem to the theory behind new magnetic and superconducting states.
-            </p>
-          </div>
-          <img class="headshot" src="assets/profile.jpg" alt="Portrait of Wenqin Chen" />
-        </div>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <img class="headshot side-photo" src="assets/profile.jpg" alt="Portrait of Wenqin Chen" />
+        <p class="eyebrow">Computational Physicist</p>
+        <h1 class="side-name">Wenqin&nbsp;Chen</h1>
+        <p class="side-tagline">Machine learning &amp; quantum many-body theory</p>
+        <ul class="side-links">
+          <li><a class="side-primary" href="assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+          <li><a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:wenqinchenphy@gmail.com">Email</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <p class="eyebrow">About</p>
+        <p class="intro">
+          I'm a physics PhD candidate at the University of Washington (advisors Di&nbsp;Xiao and
+          Ting&nbsp;Cao), graduating in 2027. I build computational and machine-learning models for
+          hard problems in quantum matter — from transformer neural networks that solve the quantum
+          many-body problem to the theory behind new magnetic and superconducting states.
+        </p>
         <ul class="hero-facts">
           <li>First-author papers in <em>Physical Review B</em>; co-author in <em>Physical Review Letters</em> and <em>Nature Materials</em>; 180+ citations.</li>
           <li>Research internships at Los Alamos National Laboratory (Theoretical Division) and Lawrence Berkeley National Laboratory.</li>
           <li>5+ years of large-scale scientific computing and numerical modeling — Python, JAX, NumPy/SciPy, and GPU/HPC (SLURM).</li>
         </ul>
-        <div class="hero-links">
-          <a class="btn primary" href="assets/Wenqin_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
-          <a class="btn" href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-          <a class="btn" href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="mailto:wenqinchenphy@gmail.com">Email</a>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="wrap">
+      <!-- PROJECTS -->
+      <section class="section" id="projects">
         <div class="section-head">
           <p class="eyebrow">Selected Work</p>
           <h2>Projects</h2>
@@ -117,12 +107,10 @@
             </div>
           </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PUBLICATIONS -->
-    <section class="section" id="publications">
-      <div class="wrap about">
+      <!-- PUBLICATIONS -->
+      <section class="section" id="publications">
         <p class="eyebrow">Publications</p>
         <h2>Selected papers</h2>
         <p class="lead">8 papers · 180+ citations · in journals including <em>Nature Materials</em>,
@@ -146,21 +134,12 @@
             <div class="pub-meta">First author · <a href="https://doi.org/10.1103/PhysRevB.105.054507" target="_blank" rel="noopener">Phys. Rev. B 105, 054507</a> (2022)</div>
           </li>
         </ul>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-links">
-        <a href="mailto:wenqinchenphy@gmail.com">Email</a>
-        <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://github.com/wenqinchen98" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <div class="footer-note">© 2026 Wenqin Chen</div>
-    </div>
-  </footer>
+      <footer class="main-footer">© 2026 Wenqin&nbsp;Chen</footer>
+    </main>
+
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>
