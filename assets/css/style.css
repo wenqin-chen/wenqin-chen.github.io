@@ -106,6 +106,7 @@ p { margin: 0 0 1rem; }
 .main { min-width: 0; }
 .main .section { padding: clamp(48px, 6vw, 64px) 0; }
 .main .section:first-child { padding-top: 0; }
+.main .section h2 { font-size: 1.5rem; }
 .about-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 26px; row-gap: 15px; max-width: none; margin: 0; }
 .about-dl dt { font-weight: 700; color: var(--ink); }
 .about-dl dd { margin: 0; color: var(--ink-2); }
@@ -177,7 +178,7 @@ p { margin: 0 0 1rem; }
 .proj:hover { text-decoration: none; }
 .proj:hover .proj-title { color: var(--accent); }
 .proj-text { min-width: 0; }
-.proj-num { font-family: var(--mono); font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+.proj-num { font-family: var(--mono); font-size: .78rem; color: var(--accent); letter-spacing: .04em; }
 .proj-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); margin: 6px 0 10px; transition: color .14s ease; }
 .proj-desc { color: var(--ink-2); font-size: 1rem; margin: 0 0 15px; }
 .proj .tags { margin-bottom: 16px; }
