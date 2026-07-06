@@ -92,7 +92,7 @@ p { margin: 0 0 1rem; }
 .divider { height: 1px; background: var(--line); border: 0; margin: 0; }
 
 /* ---------- home: sidebar + main two-column layout ---------- */
-.layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 56px; max-width: 1240px; margin: 0 auto; padding: 56px 32px 0; }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; max-width: 1240px; margin: 0 auto; padding: 56px 32px 0; }
 .sidebar-inner { position: sticky; top: 56px; }
 .side-photo { width: 172px; height: 172px; margin-bottom: 24px; }
 .side-name { font-size: 2rem; margin: 0 0 .3rem; }
