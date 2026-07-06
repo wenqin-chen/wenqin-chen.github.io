@@ -106,7 +106,7 @@ p { margin: 0 0 1rem; }
 .main { min-width: 0; }
 .main .section { padding: clamp(48px, 6vw, 64px) 0; }
 .main .section:first-child { padding-top: 0; }
-.about-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 26px; row-gap: 15px; max-width: var(--prose); margin: 0; }
+.about-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 26px; row-gap: 15px; max-width: none; margin: 0; }
 .about-dl dt { font-weight: 700; color: var(--ink); }
 .about-dl dd { margin: 0; color: var(--ink-2); }
 @media (max-width: 560px) { .about-dl { grid-template-columns: 1fr; row-gap: 3px; } .about-dl dt { margin-top: 12px; } .about-dl dt:first-of-type { margin-top: 0; } }
