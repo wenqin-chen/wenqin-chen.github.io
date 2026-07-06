@@ -209,6 +209,8 @@ p { margin: 0 0 1rem; }
 .hero-facts { list-style: none; padding: 0; margin: 1.5rem 0 0; max-width: var(--prose); }
 .hero-facts li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
 .hero-facts li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.hero-toolkit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-top: 1.4rem; max-width: var(--prose); }
+.hero-toolkit .tk-label { flex: none; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 @media (max-width: 620px) { .hero-head { flex-direction: column-reverse; align-items: flex-start; gap: 22px; } .hero-head .headshot { width: 200px; height: 200px; } }
 .about ul { list-style: none; padding: 0; margin: 1rem 0 0; }
 .about ul li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
