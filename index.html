@@ -56,53 +56,57 @@
           <h2>Projects</h2>
         </div>
 
-        <div class="grid">
+        <div class="projects">
           <!-- 01 NQS -->
-          <a class="card" href="projects/neural-quantum-states.html">
-            <div class="card-fig"><img src="assets/figures/nqs-texture.jpg" alt="Skyrmion-crystal spin texture from the neural-network wavefunction" loading="lazy" /></div>
-            <div class="card-body">
-              <span class="card-num">01 · Machine learning</span>
-              <h3 class="card-title">Neural Quantum States for Correlated Electrons</h3>
-              <p class="card-desc">A transformer wavefunction that solves the quantum many-body problem — optimized by variational Monte Carlo and validated to exact-diagonalization precision on GPUs.</p>
+          <a class="proj" href="projects/neural-quantum-states.html">
+            <div class="proj-text">
+              <span class="proj-num">01 · Machine learning</span>
+              <h3 class="proj-title">Neural Quantum States for Correlated Electrons</h3>
+              <p class="proj-desc">A transformer wavefunction that solves the quantum many-body problem — optimized by variational Monte Carlo and validated to exact-diagonalization precision on GPUs.</p>
               <ul class="tags"><li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li><li>GPU / HPC</li></ul>
-              <span class="card-more" style="margin-top:16px">View project →</span>
+              <span class="proj-more">View project →</span>
             </div>
+            <div class="proj-fig"><img src="assets/figures/nqs-2panel.png" alt="Skyrmion-crystal spin texture and the N=18 variational-Monte-Carlo training convergence from the neural-network wavefunction" loading="lazy" /></div>
           </a>
 
           <!-- 02 Quantum computing -->
-          <a class="card" href="projects/quantum-computing.html">
-            <div class="card-fig"><img src="assets/figures/quantum-computing-card.svg" alt="Majorana zero modes glowing at the ends of a topological-superconductor nanowire" loading="lazy" /></div>
-            <div class="card-body">
-              <span class="card-num">02 · Quantum computing</span>
-              <h3 class="card-title">Braiding Majorana Zero Modes for Fault-Tolerant Topological Qubits</h3>
-              <p class="card-desc">Two theory papers — one first-author (Physical Review B) — on braiding Majorana zero modes in topological-superconductor nanowires: the pieces of a fault-tolerant topological qubit.</p>
+          <a class="proj" href="projects/quantum-computing.html">
+            <div class="proj-text">
+              <span class="proj-num">02 · Quantum computing</span>
+              <h3 class="proj-title">Braiding Majorana Zero Modes for Fault-Tolerant Topological Qubits</h3>
+              <p class="proj-desc">Two theory papers — one first-author (Physical Review B) — on braiding Majorana zero modes in topological-superconductor nanowires: the pieces of a fault-tolerant topological qubit.</p>
               <ul class="tags"><li>Topological superconductivity</li><li>Majorana modes</li><li>Non-Abelian braiding</li><li>BdG theory</li></ul>
-              <span class="card-more" style="margin-top:16px">View project →</span>
+              <span class="proj-more">View project →</span>
             </div>
+            <div class="proj-fig"><img src="assets/figures/qc-fig-tetron.png" alt="Figure 1 of the first-author PRB paper: a Majorana wire versus a trivial Andreev bound state, the topological energy spectrum, the modified-tetron braiding device, and the non-Abelian braiding results" loading="lazy" /></div>
           </a>
 
           <!-- 03 HF -->
-          <a class="card" href="projects/hartree-fock-solver.html">
-            <div class="card-fig"><img src="assets/figures/hf-spinamp.png" alt="Spin-amplitude texture of a self-consistent electron crystal" loading="lazy" /></div>
-            <div class="card-body">
-              <span class="card-num">03 · Scientific computing</span>
-              <h3 class="card-title">A Continuum Hartree–Fock Many-Body Solver</h3>
-              <p class="card-desc">A from-scratch self-consistent mean-field solver for interacting 2D electrons, built around a linear-response → instability → self-consistency diagnostic pipeline.</p>
+          <a class="proj" href="projects/hartree-fock-solver.html">
+            <div class="proj-text">
+              <span class="proj-num">03 · Scientific computing</span>
+              <h3 class="proj-title">A Continuum Hartree–Fock Many-Body Solver</h3>
+              <p class="proj-desc">A from-scratch self-consistent mean-field solver for interacting 2D electrons, built around a linear-response → instability → self-consistency diagnostic pipeline.</p>
               <ul class="tags"><li>Python</li><li>Mean-field</li><li>Linear response</li><li>NERSC / SLURM</li></ul>
-              <span class="card-more" style="margin-top:16px">View project →</span>
+              <span class="proj-more">View project →</span>
+            </div>
+            <div class="proj-fig proj-fig-row">
+              <img src="assets/figures/hf-charge.png" alt="Charge-density texture of the self-consistent electron crystal" loading="lazy" />
+              <img src="assets/figures/hf-spinamp.png" alt="Spin-amplitude texture of the self-consistent electron crystal" loading="lazy" />
+              <img src="assets/figures/hf-spindir.png" alt="In-plane spin-direction texture of the self-consistent electron crystal" loading="lazy" />
             </div>
           </a>
 
           <!-- 04 Condensed matter theory (Cooper pairs + phonon magnetism) -->
-          <a class="card" href="projects/condensed-matter-theory.html">
-            <div class="card-fig"><img src="assets/figures/cooper.png" alt="Momentum-space quantum-geometric structure underlying a Cooper pair" loading="lazy" /></div>
-            <div class="card-body">
-              <span class="card-num">04 · Condensed matter theory</span>
-              <h3 class="card-title">Quantum Geometry of Superconductivity &amp; Phonon Magnetism</h3>
-              <p class="card-desc">Three first-author theories on how the quantum geometry of electron bands — Berry curvature and the quantum metric — sets the size of a Cooper pair and the magnetic moment of a phonon.</p>
+          <a class="proj" href="projects/condensed-matter-theory.html">
+            <div class="proj-text">
+              <span class="proj-num">04 · Condensed matter theory</span>
+              <h3 class="proj-title">Quantum Geometry of Superconductivity &amp; Phonon Magnetism</h3>
+              <p class="proj-desc">Three first-author theories on how the quantum geometry of electron bands — Berry curvature and the quantum metric — sets the size of a Cooper pair and the magnetic moment of a phonon.</p>
               <ul class="tags"><li>Quantum geometry</li><li>Berry curvature</li><li>Superconductivity</li><li>Phonon magnetism</li></ul>
-              <span class="card-more" style="margin-top:16px">View project →</span>
+              <span class="proj-more">View project →</span>
             </div>
+            <div class="proj-fig"><img src="assets/figures/cooper.png" alt="Momentum-space quantum-geometric structure underlying a Cooper pair" loading="lazy" /></div>
           </a>
         </div>
       </section>
