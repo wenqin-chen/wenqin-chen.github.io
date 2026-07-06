@@ -209,7 +209,7 @@ p { margin: 0 0 1rem; }
 .hero-facts { list-style: none; padding: 0; margin: 1.5rem 0 0; max-width: var(--prose); }
 .hero-facts li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
 .hero-facts li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-@media (max-width: 620px) { .hero-head { flex-direction: column-reverse; align-items: flex-start; gap: 22px; } .hero-head .headshot { width: 150px; height: 150px; } }
+@media (max-width: 620px) { .hero-head { flex-direction: column-reverse; align-items: flex-start; gap: 22px; } .hero-head .headshot { width: 200px; height: 200px; } }
 .about ul { list-style: none; padding: 0; margin: 1rem 0 0; }
 .about ul li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
 .about ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
