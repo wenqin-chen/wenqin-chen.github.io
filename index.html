@@ -56,7 +56,7 @@
 
         <div class="projects">
           <!-- 01 NQS -->
-          <a class="proj" href="projects/neural-quantum-states.html">
+          <a class="proj proj--featured" href="projects/neural-quantum-states.html">
             <div class="proj-text">
               <span class="proj-num">01 · Machine learning for science</span>
               <h3 class="proj-title">Attention-Based Neural Quantum States</h3>
@@ -65,6 +65,104 @@
               <span class="proj-more">View project →</span>
             </div>
             <div class="proj-fig"><img src="assets/figures/nqs-2panel.png" alt="Skyrmion-crystal spin texture and the N=18 variational-Monte-Carlo training convergence from the neural-network wavefunction" loading="lazy" /></div>
+            <div class="proj-diagram">
+              <div class="diagram-wrap">
+                <svg viewBox="0 26 980 378" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+      <title>Neural quantum state: architecture and training pipeline</title>
+      <desc>The determinant matrix equals the Hartree-Fock spinor envelope times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spinor envelope come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
+      <defs>
+        <marker id="dM" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
+        <marker id="dA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+      </defs>
+
+      <text x="217" y="46" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">① Wavefunction · Psiformer</text>
+      <text x="690" y="46" text-anchor="middle" font-family="var(--serif)" font-size="16" font-weight="600" fill="var(--ink)">② Trained by VMC + MinSR</text>
+
+      <!-- Psi -->
+      <rect x="172" y="60" width="116" height="40" rx="10" fill="var(--card)" stroke="var(--accent)" stroke-width="2.6"/>
+      <text x="230" y="80" text-anchor="middle" font-family="var(--serif)" font-size="17" font-weight="700" fill="var(--ink)">Ψθ</text>
+      <text x="230" y="93" text-anchor="middle" font-size="9" fill="var(--muted)">wavefunction</text>
+      <line x1="230" y1="116" x2="230" y2="102" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- det -->
+      <rect x="165" y="118" width="130" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="230" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">det</text>
+      <line x1="228" y1="180" x2="228" y2="154" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- ===== product line:  spinor envelope  ⊗  ( 1 + backflow ) ===== -->
+      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor envelope</text>
+
+      <circle cx="188" cy="202" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="188" y="206.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">×</text>
+
+      <text x="205" y="216" font-size="42" fill="var(--ink-2)">(</text>
+      <text x="234" y="208" font-size="15" fill="var(--ink)">1 +</text>
+
+      <rect x="262" y="182" width="130" height="40" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="207" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">backflow</text>
+
+      <text x="399" y="216" font-size="42" fill="var(--ink-2)">)</text>
+
+      <!-- left branch: Hartree-Fock -> spinor envelope -->
+      <rect x="40" y="254" width="120" height="36" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
+      <text x="100" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Hartree–Fock</text>
+      <line x1="100" y1="254" x2="100" y2="225" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- right branch: transformer -> backflow -->
+      <rect x="252" y="238" width="150" height="98" rx="10" fill="none" stroke="var(--line-2)" stroke-width="1.3" stroke-dasharray="5 3"/>
+      <text x="408" y="254" font-size="12.5" font-weight="700" fill="var(--muted)">×L</text>
+      <rect x="266" y="244" width="122" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="264" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">MLP</text>
+      <rect x="260" y="300" width="134" height="32" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="327" y="320" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">self-attention</text>
+      <line x1="327" y1="300" x2="327" y2="278" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+      <line x1="327" y1="244" x2="327" y2="225" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- inputs feeding both branches (moved up to close the gap) -->
+      <rect x="150" y="356" width="246" height="40" rx="9" fill="var(--card)" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <g fill="#6ea8d8"><rect x="247" y="364" width="10" height="10" rx="2"/><rect x="260" y="364" width="10" height="10" rx="2"/><rect x="273" y="364" width="10" height="10" rx="2"/><rect x="286" y="364" width="10" height="10" rx="2"/><rect x="299" y="364" width="10" height="10" rx="2"/></g>
+      <text x="273" y="388" text-anchor="middle" font-size="10.5" fill="var(--muted)">N tokens = N electrons (position + spin)</text>
+      <path d="M150 376 L 100 376 L 100 292" fill="none" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+      <line x1="327" y1="354" x2="327" y2="336" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
+
+      <!-- ===== LOOP (moved up ~22) ===== -->
+      <path d="M288 74 C 410 78 515 90 580 98" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <path d="M672 116 C 762 136 812 160 840 186" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <!-- smooth bottom sweep: local energy -> MinSR -> update theta, one continuous curve -->
+      <path d="M890 210 C 952 285 800 334 664 334" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <path d="M598 334 C 500 334 452 326 400 316" fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#dA)"/>
+      <text x="492" y="321" font-size="12" font-weight="700" fill="var(--accent)">update θ</text>
+
+      <text x="690" y="204" text-anchor="middle" font-family="var(--serif)" font-style="italic" font-size="14.5" fill="var(--ink-2)">E = ⟨Ψ|H|Ψ⟩ / ⟨Ψ|Ψ⟩</text>
+      <text x="690" y="222" text-anchor="middle" font-size="10.5" fill="var(--muted)">minimize — lower is better</text>
+
+      <g fill="var(--accent)"><circle cx="614" cy="98" r="2.3"/><circle cx="628" cy="90" r="2"/><circle cx="642" cy="100" r="2.4"/><circle cx="622" cy="110" r="2"/><circle cx="636" cy="108" r="2.2"/><circle cx="650" cy="112" r="1.9"/><circle cx="608" cy="110" r="1.8"/><circle cx="632" cy="121" r="2.1"/><circle cx="646" cy="124" r="1.9"/></g>
+      <g fill="var(--ink-2)" opacity="0.55"><circle cx="620" cy="86" r="1.6"/><circle cx="656" cy="104" r="1.6"/><circle cx="602" cy="102" r="1.6"/><circle cx="638" cy="84" r="1.5"/><circle cx="660" cy="118" r="1.5"/><circle cx="616" cy="128" r="1.6"/></g>
+      <text x="631" y="152" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Sample configs</text>
+      <text x="631" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">r ~ |Ψ|²  ·  MCMC</text>
+
+      <circle cx="862" cy="210" r="28" fill="#cfe0f0"/><circle cx="862" cy="210" r="18" fill="#e8f0f7"/><circle cx="862" cy="210" r="9" fill="#d1483a"/>
+      <g stroke="var(--ink-2)" stroke-width="1.3" opacity="0.7"><line x1="862" y1="190" x2="862" y2="183"/><line x1="881" y1="199" x2="887" y2="195"/><line x1="881" y1="221" x2="887" y2="225"/><line x1="862" y1="230" x2="862" y2="237"/><line x1="843" y1="221" x2="837" y2="225"/><line x1="843" y1="199" x2="837" y2="195"/></g>
+      <text x="862" y="256" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Local energy</text>
+      <text x="862" y="270" text-anchor="middle" font-size="10" fill="var(--muted)">Ψ⁻¹ H Ψ</text>
+
+      <line x1="602" y1="298" x2="602" y2="334" stroke="var(--line-2)" stroke-width="1.4"/>
+      <line x1="602" y1="334" x2="660" y2="334" stroke="var(--line-2)" stroke-width="1.4"/>
+      <polyline points="608,302 617,318 630,327 645,331 658,332" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+      <g fill="var(--accent)"><circle cx="608" cy="302" r="2.3"/><circle cx="630" cy="327" r="2.3"/><circle cx="658" cy="332" r="2.3"/></g>
+      <text x="631" y="356" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">MinSR update</text>
+      <text x="631" y="370" text-anchor="middle" font-size="10" fill="var(--muted)">natural gradient</text>
+
+      <!-- legend (relocated to bottom-right) -->
+      <g font-size="11.5" fill="var(--muted)">
+        <rect x="700" y="370" width="17" height="13" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.4"/><text x="723" y="380">learnable</text>
+        <rect x="798" y="370" width="17" height="13" rx="3" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.4"/><text x="821" y="380">fixed</text>
+        <rect x="872" y="370" width="17" height="13" rx="3" fill="#6ea8d8" stroke="#4f8bc0" stroke-width="1.2"/><text x="895" y="380">input</text>
+      </g>
+    </svg>
+              </div>
+            </div>
           </a>
 
           <!-- 02 Quantum computing -->
