@@ -73,30 +73,35 @@ def build_flowchart(path: Path) -> None:
 
     bold = dict(fontsize=15.5, fontweight="bold", color=INK)
     math = dict(fontsize=13.5, color=INK)
+    note = dict(fontsize=12, color="#6b7480")
 
     cx = 38.0  # main column
     y_seed, y_ham, y_diag, y_spin, y_conv, y_saddle = 108.5, 92, 75.5, 60, 39, 12.5
     cx_mix, y_mix = 78.0, 68.0
 
-    box(cx, y_seed, 40, 6.4, ORANGE, "#fdebd8",
-        [(r"Initial spin texture  $S^{\,0}$", bold)])
-    box(cx, y_ham, 46, 9.6, INK, BOX_BG, [
-        ("Build mean-field Hamiltonian", bold),
-        (r"$H[S] = H_t + H_R - \sum_i S_i \cdot \sigma_i - A\,(S_i^z)^2$", math),
+    box(cx, y_seed, 40, 9.6, ORANGE, "#fdebd8", [
+        (r"Initial order parameter  $m^{\,0}$", bold),
+        ("a symmetry-breaking trial state", note),
     ])
-    box(cx, y_diag, 46, 6.4, INK, BOX_BG,
-        [(r"Diagonalize over the $k$-grid", bold)])
+    box(cx, y_ham, 46, 9.6, INK, BOX_BG, [
+        ("Build the mean-field Hamiltonian", bold),
+        (r"$H[m] = H_0 + V[m]$", math),
+    ])
+    box(cx, y_diag, 46, 9.6, INK, BOX_BG, [
+        (r"Diagonalize over the $k$-grid", bold),
+        (r"$H[m]\,|\psi_{nk}\rangle = \varepsilon_{nk}\,|\psi_{nk}\rangle$", math),
+    ])
     box(cx, y_spin, 46, 9.6, INK, BOX_BG, [
-        ("Compute new spin field", bold),
-        (r"$T[S] = I\,\langle \sigma_i \rangle$", math),
+        ("Evaluate the new mean field", bold),
+        (r"$m' = T[m] = \langle \hat{O} \rangle_{\mathrm{occ}}$", math),
     ])
     box(cx, y_saddle, 46, 9.6, TEAL, "#ddeef5", [
-        ("Saddle point", dict(fontsize=15.5, fontweight="bold", color=TEAL)),
-        (r"$S^{\star} = T[S^{\star}]\;\rightarrow\;$texture, $F$, $\mu$, $\sigma_{xy}$", math),
+        ("Self-consistent solution", dict(fontsize=15.5, fontweight="bold", color=TEAL)),
+        (r"$m^{\star} = T[m^{\star}]\;\rightarrow\;$ energy $F$, observables", math),
     ])
     box(cx_mix, y_mix, 30, 9.6, GREEN, "#ecf5ec", [
         ("Mix and update", dict(fontsize=15.5, fontweight="bold", color=GREEN)),
-        (r"$S \leftarrow (1-\alpha)S + \alpha\,T[S]$", math),
+        (r"$m \leftarrow (1-\alpha)\,m + \alpha\,m'$", math),
     ])
 
     # decision diamond
@@ -106,7 +111,7 @@ def build_flowchart(path: Path) -> None:
         closed=True, edgecolor=INK, facecolor="#eef2f5", linewidth=2.6, zorder=3,
     ))
     ax.text(cx, y_conv + 2.6, "converged?", ha="center", va="center", zorder=4, **bold)
-    ax.text(cx, y_conv - 2.6, r"$\|T[S]-S\|_2/\sqrt{N_c} < 10^{-5}$",
+    ax.text(cx, y_conv - 2.6, r"$\| m' - m \| < \epsilon$",
             ha="center", va="center", zorder=4, **math)
 
     def arrow(p0, p1, color=INK, connectionstyle=None):
@@ -117,9 +122,9 @@ def build_flowchart(path: Path) -> None:
             shrinkA=0, shrinkB=0,
         ))
 
-    arrow((cx, y_seed - 3.8), (cx, y_ham + 5.6))
-    arrow((cx, y_ham - 5.6), (cx, y_diag + 3.9))
-    arrow((cx, y_diag - 3.9), (cx, y_spin + 5.6))
+    arrow((cx, y_seed - 5.6), (cx, y_ham + 5.6))
+    arrow((cx, y_ham - 5.6), (cx, y_diag + 5.6))
+    arrow((cx, y_diag - 5.6), (cx, y_spin + 5.6))
     arrow((cx, y_spin - 5.6), (cx, y_conv + dh + 0.6))
     arrow((cx, y_conv - dh - 0.6), (cx, y_saddle + 5.6))
     # no -> mix -> back to Hamiltonian (right-angle path)
@@ -131,10 +136,12 @@ def build_flowchart(path: Path) -> None:
             fontsize=15, fontweight="bold")
     ax.text(cx + 2.2, (y_conv - dh + y_saddle + 5.6) / 2, "yes", color=GREEN,
             fontsize=15, fontweight="bold")
+    ax.text((cx + 23.8 + cx_mix) / 2, y_ham + 2.6, "SCF loop",
+            ha="center", fontsize=11.5, style="italic", color="#6b7480")
 
     ax.text(50, 2.2,
-            r"fixed point  $S^{\star} = T[S^{\star}]$   $\Leftrightarrow$   "
-            r"stationary point of $F[\{S_i\}]$  —  the saddle we solve for",
+            r"fixed point  $m^{\star} = T[m^{\star}]$   $\Leftrightarrow$   "
+            r"stationary point of the free energy $F[m]$",
             ha="center", va="center", fontsize=13, style="italic", color=INK)
 
     fig.savefig(path, facecolor="white")
