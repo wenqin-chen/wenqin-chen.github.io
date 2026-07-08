@@ -175,29 +175,11 @@
           ansatz. The convergence panel above shows a production run at 18 electrons: several
           competing candidate states, each optimized to a tight energy plateau and compared.</p>
 
-        <h2>My contribution</h2>
-        <p>Neural quantum states are an established idea — I build directly on DeepMind's
-          <a href="https://arxiv.org/abs/1909.02487" target="_blank" rel="noopener"><strong>FermiNet</strong></a> and
-          <a href="https://arxiv.org/abs/2211.13672" target="_blank" rel="noopener"><strong>Psiformer</strong></a>.
-          The hard part of this kind of work isn't the network; it's making it <em>trainable and
-          correct</em> for one specific, difficult problem. That's what I added:</p>
-        <ul>
-          <li><strong>Getting antisymmetry right under spin–orbit coupling.</strong> With SOC, spin is
-            not conserved, so the standard spin-up × spin-down block determinant is simply wrong. The
-            solver uses a single <strong>2N×2N generalized determinant over spinor orbitals</strong> —
-            the construction a recent theorem singles out as the correct one — and its spin–orbit local
-            energy is certified by a machine-precision zero-variance test.</li>
-          <li><strong>Seeding as a science, not a trick.</strong> The orbitals warm-start from
-            Hartree–Fock spinors — and the verification runs showed <em>why</em> this matters:
-            the ordered state's basin needs the mean-field texture's full harmonic content, and a
-            first-harmonic sketch of the same state fails outright. Competing candidate states are kept
-            seed-agnostic, so the final comparison is decided by energy, not by the starting guess.</li>
-          <li><strong>Verification as the product.</strong> The audit's discipline — exact benchmarks
-            first, stop-at-plateau estimators, ablations before upgrades — is what makes the physics
-            verdict credible: a less expressive network <em>agrees</em> with mean field, and only the
-            fully grounded ansatz <strong>overturns it</strong>, revealing the candidate ordered phase
-            to be metastable rather than the true ground state.</li>
-        </ul>
+        <p>The finding: the network <strong>overturned the mean-field prediction</strong>. The ordered
+          phase that wins at the mean-field level turns out to be metastable, and the true ground state
+          is a uniform quantum fluid. Notably, a less expressive network reproduces the mean-field
+          answer; the correction emerges only at full expressiveness, which is exactly why the
+          verification above matters.</p>
 
         <h2>What it demonstrates</h2>
         <ul class="tags accent">
