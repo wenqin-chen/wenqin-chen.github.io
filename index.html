@@ -79,7 +79,7 @@
               <div class="diagram-wrap">
                 <svg viewBox="0 26 980 378" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
       <title>Neural quantum state: architecture and training pipeline</title>
-      <desc>The determinant matrix equals the Hartree-Fock spinor envelope times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spinor envelope come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
+      <desc>The determinant matrix equals the spinor envelope times (1 + backflow); a sum of K=4 generalized determinants of it, times a flexible Jastrow factor, gives the wavefunction. The spinor envelope is learnable, warm-started from Hartree-Fock; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
       <defs>
         <marker id="dM" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
         <marker id="dA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
@@ -96,12 +96,12 @@
 
       <!-- det -->
       <rect x="165" y="118" width="130" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="230" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">det</text>
+      <text x="230" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">∑ det (K=4)</text>
       <line x1="228" y1="180" x2="228" y2="154" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
 
       <!-- ===== product line:  spinor envelope  ⊗  ( 1 + backflow ) ===== -->
-      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
-      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor envelope</text>
+      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">spinor envelope</text>
 
       <circle cx="188" cy="202" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
       <text x="188" y="206.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">×</text>

@@ -36,8 +36,8 @@
           variational, GPU-accelerated, and built stage by stage against exact references.</p>
         <ul class="meta-row">
           <li><b>Role</b> — Solo developer &amp; researcher</li>
-          <li><b>Stack</b> — JAX · NetKet</li>
-          <li><b>Scale</b> — ~14,000 lines · GPU (H200) + HPC</li>
+          <li><b>Stack</b> — Python · JAX</li>
+          <li><b>Scale</b> — ~14,000 lines · 66 tests · GPU (H200) + HPC</li>
         </ul>
       </div>
 
@@ -56,17 +56,17 @@
           wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
 
         <p>I built a continuum NQS solver from the ground up: a <strong>Psiformer / transformer
-          wavefunction</strong> for a two-dimensional multi-orbital electron gas with spin–orbit coupling
-          and long-range Coulomb interaction, optimized by variational Monte Carlo with
-          <strong>natural-gradient (MinSR)</strong> updates and Ewald-summed interactions, running on
-          H200 GPUs and HPC clusters.</p>
+          wavefunction</strong> for a two-dimensional electron gas with Rashba spin–orbit coupling, a
+          Zeeman field, and long-range (Ewald-summed) Coulomb interaction, optimized by variational
+          Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates, running on H200 GPUs and
+          HPC clusters.</p>
       </div>
 
       <figure class="project-figure diagram-fig">
         <div class="diagram-wrap">
           <svg viewBox="0 26 980 378" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
       <title>Neural quantum state: architecture and training pipeline</title>
-      <desc>The determinant matrix equals the Hartree-Fock spinor envelope times (1 + backflow); a single Slater determinant of it gives the wavefunction. The spinor envelope come from a fixed Hartree-Fock warm start; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
+      <desc>The determinant matrix equals the spinor envelope times (1 + backflow); a sum of K=4 generalized determinants of it, times a flexible Jastrow factor, gives the wavefunction. The spinor envelope is learnable, warm-started from Hartree-Fock; the backflow comes from a transformer (self-attention then MLP). Both branches start from the electron positions and spins. The wavefunction is trained by the VMC/MinSR loop on the right.</desc>
       <defs>
         <marker id="dM" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker>
         <marker id="dA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
@@ -83,12 +83,12 @@
 
       <!-- det -->
       <rect x="165" y="118" width="130" height="34" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
-      <text x="230" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent)">det</text>
+      <text x="230" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">∑ det (K=4)</text>
       <line x1="228" y1="180" x2="228" y2="154" stroke="var(--muted)" stroke-width="1.7" marker-end="url(#dM)"/>
 
       <!-- ===== product line:  spinor envelope  ⊗  ( 1 + backflow ) ===== -->
-      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--bg-2)" stroke="var(--line-2)" stroke-width="1.5"/>
-      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">spinor envelope</text>
+      <rect x="35" y="182" width="130" height="40" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text x="100" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="var(--accent)">spinor envelope</text>
 
       <circle cx="188" cy="202" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
       <text x="188" y="206.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent)">×</text>
@@ -160,18 +160,23 @@
     </svg>
         </div>
       </figure>
-      <p class="figcaption"><em>In plain terms — a transformer defines the wavefunction, and the training loop tunes it to minimize the energy.</em> The full pipeline: a transformer wavefunction (left) trained by variational Monte Carlo with MinSR natural-gradient updates (right). Learnable components in red, fixed physics in grey.</p>
+      <p class="figcaption"><em>In plain terms — a transformer defines the wavefunction, and the training loop tunes it to minimize the energy.</em> The full pipeline: a transformer wavefunction (left) trained by variational Monte Carlo with MinSR natural-gradient updates (right). Learnable components in red, fixed physics in grey; the production ansatz sums four generalized determinants and carries a flexible Jastrow prefactor (not drawn).</p>
 
       <div class="prose">
 
-        <p>The project is structured as a <strong>ten-notebook ladder</strong> — nine pedagogical stages
-          that add one piece of physics at a time, plus a production sweep — and every stage is validated
-          against an exact reference: exact diagonalization, published quantum Monte Carlo, or a
-          Hellmann–Feynman consistency check. In the full-physics regime the trained network recovers
-          <strong>96% of the exact correlation energy</strong> at two electrons and sits
-          <strong>36 mHa per electron below Hartree–Fock</strong> at four; the convergence panel above
-          shows the scaled-up production run at 18 electrons, where several competing candidate states
-          are each optimized to a tight energy plateau and compared.</p>
+        <p>Before trusting the network with physics, I put the architecture through a full
+          <strong>verification audit</strong>. I built an exact diagonalization of the same Hamiltonian
+          — itself verified against analytic limits to machine precision — and the trained network
+          lands <strong>0.7 mHa above the exact ground state at two electrons, within Monte-Carlo
+          noise</strong> (96% of the correlation energy). A 17-paper survey then tied every design
+          choice to a published precedent or, for the spin–orbit determinant, to a theorem. The audit
+          caught and fixed <strong>three of its own subtle bugs</strong> along the way — which is
+          exactly why its surviving numbers can be trusted. On top of the lean baseline, a
+          size-scaling ablation selected the <strong>production ansatz</strong> — four generalized
+          determinants, learnable envelopes, and a flexible Jastrow factor — worth a further
+          ~15 mHa per electron at production sizes. The convergence panel above shows a production
+          run at 18 electrons: several competing candidate states, each optimized to a tight energy
+          plateau and compared.</p>
 
         <h2>My contribution</h2>
         <p>Neural quantum states are an established idea — I build directly on DeepMind's
@@ -179,22 +184,21 @@
           isn't the network; it's making it <em>trainable and correct</em> for one specific, difficult
           problem. That's what I added:</p>
         <ul>
-          <li><strong>A harder problem class.</strong> Published continuum NQS with spin–orbit coupling
-            stops at the single-orbital Rashba gas. I extended the architecture to a
-            <strong>multi-orbital</strong> electron gas with crystal field, atomic and Rashba spin–orbit,
-            and Ewald-summed Coulomb — the ingredients the magnetism I study actually requires, since
-            the easy-axis anisotropy that stabilizes it only emerges from the multi-orbital structure.</li>
-          <li><strong>A training-stability method.</strong> Once spin–orbit coupling enters, the
-            optimization landscape grows degenerate basins that trap random or hand-engineered
-            initializations — the run converges, but to the wrong state. Seeding the orbital networks
-            with filled <strong>Hartree–Fock spin-orbitals as residual starting points</strong> proved
-            the single most effective fix; a companion scaling rule (shrink the residual coefficient as
-            ~1/N) keeps the correction bounded as electron count grows.</li>
-          <li><strong>Verification as a design principle.</strong> Every stage is checked against an
-            exact reference before the next is built — down to a machine-precision zero-variance test
-            certifying the spin–orbit local energy. The payoff: a verdict you can trust when it matters.
-            Here the network <strong>overturned the mean-field prediction</strong> — the candidate
-            ordered phase turned out to be metastable rather than the true ground state.</li>
+          <li><strong>Getting antisymmetry right under spin–orbit coupling.</strong> With SOC, spin is
+            not conserved, so the standard spin-up × spin-down block determinant is simply wrong. The
+            solver uses a single <strong>2N×2N generalized determinant over spinor orbitals</strong> —
+            the construction a recent theorem singles out as the correct one — and its spin–orbit local
+            energy is certified by a machine-precision zero-variance test.</li>
+          <li><strong>Seeding as a science, not a trick.</strong> The orbitals warm-start from
+            Hartree–Fock / Rashba spinors — and the verification runs showed <em>why</em> this matters:
+            the ordered state's basin needs the mean-field texture's full harmonic content, and a
+            first-harmonic sketch of the same state fails outright. Competing candidate states are kept
+            seed-agnostic, so the final comparison is decided by energy, not by the starting guess.</li>
+          <li><strong>Verification as the product.</strong> The audit's discipline — exact benchmarks
+            first, stop-at-plateau estimators, ablations before upgrades — is what makes the physics
+            verdict credible: a less expressive network <em>agrees</em> with mean field, and only the
+            fully grounded ansatz <strong>overturns it</strong>, revealing the candidate ordered phase
+            to be metastable rather than the true ground state.</li>
         </ul>
 
         <h2>What it demonstrates</h2>
@@ -204,8 +208,9 @@
           <li>Reproducible research code</li><li>pytest</li>
         </ul>
 
-        <div class="callout"><strong>Status.</strong> Methodology paper in preparation; the code will be
-          released alongside it. The underlying physics application is unpublished and omitted here.</div>
+        <div class="callout"><strong>Status.</strong> Manuscripts in preparation; the code will be
+          released alongside them. The engine is now searching a previously untested dilute regime —
+          the unpublished physics is deliberately omitted here.</div>
 
         <div class="link-row">
           <span class="btn disabled" aria-disabled="true">Code — coming soon</span>
