@@ -171,19 +171,21 @@
               <span class="proj-num">02 · Quantum computing</span>
               <h3 class="proj-title">Braiding Majorana Zero Modes for Fault-Tolerant Topological Qubits</h3>
               <p class="proj-desc">Two theory papers — one first-author (Physical Review B) — on braiding Majorana zero modes in topological-superconductor nanowires: the pieces of a fault-tolerant topological qubit.</p>
-              <svg class="braid-fig" viewBox="0 0 128 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Braiding worldlines: the middle two Majoranas (2 and 3) are exchanged twice while 1 and 4 stay fixed">
-                <g fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
-                  <line x1="16" y1="10" x2="16" y2="140"/>
-                  <line x1="112" y1="10" x2="112" y2="140"/>
-                  <path d="M80 10 L80 25 C80 45 48 45 48 65 L48 85 C48 105 80 105 80 125 L80 140"/>
-                </g>
-                <path d="M48 10 L48 25 C48 45 80 45 80 65 L80 85 C80 105 48 105 48 125 L48 140" fill="none" stroke="var(--bg)" stroke-width="6.5"/>
-                <path d="M48 10 L48 25 C48 45 80 45 80 65 L80 85 C80 105 48 105 48 125 L48 140" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round"/>
-                <g fill="var(--muted)" font-family="var(--sans)" font-size="12" text-anchor="middle">
-                  <text x="16" y="160">1</text><text x="48" y="160">2</text><text x="80" y="160">3</text><text x="112" y="160">4</text>
-                </g>
-              </svg>
-              <ul class="tags"><li>Topological superconductivity</li><li>Majorana modes</li><li>Non-Abelian braiding</li><li>BdG theory</li></ul>
+              <div class="proj-schematic-tags">
+                <svg class="braid-fig" viewBox="0 0 128 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Braiding worldlines: the middle two Majoranas (2 and 3) are exchanged twice while 1 and 4 stay fixed">
+                  <g fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+                    <line x1="16" y1="10" x2="16" y2="140"/>
+                    <line x1="112" y1="10" x2="112" y2="140"/>
+                    <path d="M80 10 L80 25 C80 45 48 45 48 65 L48 85 C48 105 80 105 80 125 L80 140"/>
+                  </g>
+                  <path d="M48 10 L48 25 C48 45 80 45 80 65 L80 85 C80 105 48 105 48 125 L48 140" fill="none" stroke="var(--bg)" stroke-width="6.5"/>
+                  <path d="M48 10 L48 25 C48 45 80 45 80 65 L80 85 C80 105 48 105 48 125 L48 140" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round"/>
+                  <g fill="var(--muted)" font-family="var(--sans)" font-size="12" text-anchor="middle">
+                    <text x="16" y="160">1</text><text x="48" y="160">2</text><text x="80" y="160">3</text><text x="112" y="160">4</text>
+                  </g>
+                </svg>
+                <ul class="tags"><li>Topological superconductivity</li><li>Majorana modes</li><li>Non-Abelian braiding</li><li>BdG theory</li></ul>
+              </div>
               <span class="proj-more">View project →</span>
             </div>
             <div class="proj-fig proj-fig-compose">
@@ -196,16 +198,16 @@
           <!-- 03 HF -->
           <a class="proj" href="projects/hartree-fock-solver.html">
             <div class="proj-text">
-              <span class="proj-num">03 · Scientific computing</span>
-              <h3 class="proj-title">A Continuum Hartree–Fock Many-Body Solver</h3>
+              <span class="proj-num">03 · Computational many-body physics</span>
+              <h3 class="proj-title">Self-Consistent Hartree-Fock Solver for 2D Electron Crystals</h3>
               <p class="proj-desc">A from-scratch self-consistent mean-field solver for interacting 2D electrons, built around a linear-response → instability → self-consistency diagnostic pipeline.</p>
               <ul class="tags"><li>Python</li><li>Mean-field</li><li>Linear response</li><li>NERSC / SLURM</li></ul>
               <span class="proj-more">View project →</span>
             </div>
-            <div class="proj-fig proj-fig-row">
-              <img src="assets/figures/hf-charge.png" alt="Charge-density texture of the self-consistent electron crystal" loading="lazy" />
-              <img src="assets/figures/hf-spinamp.png" alt="Spin-amplitude texture of the self-consistent electron crystal" loading="lazy" />
-              <img src="assets/figures/hf-spindir.png" alt="In-plane spin-direction texture of the self-consistent electron crystal" loading="lazy" />
+            <div class="proj-fig proj-fig-compose">
+              <img class="tall" src="assets/figures/hf-scf-flowchart.png" alt="Flowchart of the self-consistent field loop: build the mean-field Hamiltonian, diagonalize over the k-grid, compute the new spin field, then mix and update until it converges to the saddle point" loading="lazy" />
+              <img src="assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Néel texture: the residual drops below the 1e-5 tolerance while the free energy settles" loading="lazy" />
+              <img src="assets/figures/hf-scf-textures.png" alt="An in-plane spin seed self-consistently grows out-of-plane skyrmion cores: initial versus converged spin textures colored by S_z" loading="lazy" />
             </div>
           </a>
 
@@ -218,33 +220,60 @@
               <ul class="tags"><li>Quantum geometry</li><li>Berry curvature</li><li>Superconductivity</li><li>Phonon magnetism</li></ul>
               <span class="proj-more">View project →</span>
             </div>
-            <div class="proj-fig"><img src="assets/figures/cooper.png" alt="Momentum-space quantum-geometric structure underlying a Cooper pair" loading="lazy" /></div>
+            <div class="proj-fig proj-fig-condensed">
+              <img src="assets/figures/cooper-pair-banner.png" alt="Cooper-pair quantum-geometry schematic and momentum-space texture" loading="lazy" />
+              <img src="assets/figures/chiral-phonon-banner.png" alt="Chiral-phonon magnetism schematic" loading="lazy" />
+            </div>
           </a>
         </div>
       </section>
 
       <!-- PUBLICATIONS -->
       <section class="section" id="publications">
-        <h2>Selected papers</h2>
+        <h2>Publications</h2>
         <p class="lead">8 papers · 180+ citations · in journals including <em>Nature Materials</em>,
-          <em>Physical Review Letters</em>, and <em>Physical Review B</em>. Full list on
+          <em>Physical Review Letters</em>, and <em>Physical Review B</em>. Profile on
           <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
         <ul class="pub-list">
           <li>
-            <div class="pub-title">Quantum Geometric Quadrupole of Cooper Pairs</div>
-            <div class="pub-meta">First author · <a href="https://arxiv.org/abs/2605.03133" target="_blank" rel="noopener">arXiv:2605.03133</a> (2026)</div>
+            <div class="pub-title">Nonadiabatic Theory of Phonon Magnetic Moments in Insulators and Metals</div>
+            <div class="pub-authors">Haoran Chen, <span class="me">Wenqin Chen</span>, Kaijie Yang, Ting Cao, Di Xiao</div>
+            <div class="pub-meta"><a href="https://arxiv.org/abs/2605.06983" target="_blank" rel="noopener">arXiv:2605.06983</a> (2026)</div>
           </li>
           <li>
-            <div class="pub-title">Gauge theory of giant phonon magnetic moment in doped Dirac semimetals</div>
-            <div class="pub-meta">First author · <a href="https://doi.org/10.1103/PhysRevB.111.035126" target="_blank" rel="noopener">Phys. Rev. B 111, 035126</a> (2025)</div>
+            <div class="pub-title">Quantum Geometric Quadrupole of Cooper Pairs</div>
+            <div class="pub-authors"><span class="me">Wenqin Chen</span>, Kaijie Yang, Ting Cao, Shi-Zeng Lin, Jiabin Yu, Di Xiao</div>
+            <div class="pub-meta"><a href="https://arxiv.org/abs/2605.03133" target="_blank" rel="noopener">arXiv:2605.03133</a> (2026)</div>
           </li>
           <li>
             <div class="pub-title">Geometric Origin of Phonon Magnetic Moment in Dirac Materials</div>
-            <div class="pub-meta">First author · <a href="https://arxiv.org/abs/2505.09732" target="_blank" rel="noopener">arXiv:2505.09732</a> (2025)</div>
+            <div class="pub-authors"><span class="me">Wenqin Chen</span>, Xiao-Wei Zhang, Ting Cao, Shi-Zeng Lin, Di Xiao</div>
+            <div class="pub-meta"><a href="https://arxiv.org/abs/2505.09732" target="_blank" rel="noopener">arXiv:2505.09732</a> (2025)</div>
+          </li>
+          <li>
+            <div class="pub-title">Adiabatic Pumping of Orbital Magnetization by Spin Precession</div>
+            <div class="pub-authors">Yafei Ren, <span class="me">Wenqin Chen</span>, Chong Wang, Ting Cao, Di Xiao</div>
+            <div class="pub-meta"><a href="https://doi.org/10.1103/PhysRevLett.134.176702" target="_blank" rel="noopener">Phys. Rev. Lett. 134, 176702</a> (2025)</div>
+          </li>
+          <li>
+            <div class="pub-title">Gauge theory of giant phonon magnetic moment in doped Dirac semimetals</div>
+            <div class="pub-authors"><span class="me">Wenqin Chen</span>, Xiao-Wei Zhang, Ying Su, Ting Cao, Di Xiao, Shi-Zeng Lin</div>
+            <div class="pub-meta"><a href="https://doi.org/10.1103/PhysRevB.111.035126" target="_blank" rel="noopener">Phys. Rev. B 111, 035126</a> (2025)</div>
           </li>
           <li>
             <div class="pub-title">Non-Abelian statistics of Majorana zero modes in the presence of an Andreev bound state</div>
-            <div class="pub-meta">First author · <a href="https://doi.org/10.1103/PhysRevB.105.054507" target="_blank" rel="noopener">Phys. Rev. B 105, 054507</a> (2022)</div>
+            <div class="pub-authors"><span class="me">Wenqin Chen</span>, Jiachen Wang, Yijia Wu, Jie Liu, X. C. Xie</div>
+            <div class="pub-meta"><a href="https://doi.org/10.1103/PhysRevB.105.054507" target="_blank" rel="noopener">Phys. Rev. B 105, 054507</a> (2022)</div>
+          </li>
+          <li>
+            <div class="pub-title">Minimal setup for non-Abelian braiding of Majorana zero modes</div>
+            <div class="pub-authors">Jie Liu, <span class="me">Wenqin Chen</span>, Ming Gong, Yijia Wu, X. C. Xie</div>
+            <div class="pub-meta"><a href="https://doi.org/10.1007/s11433-021-1773-3" target="_blank" rel="noopener">Sci. China Phys. Mech. Astron. 64, 117811</a> (2021)</div>
+          </li>
+          <li>
+            <div class="pub-title">Observation of three-state nematicity in the triangular lattice antiferromagnet Fe<sub>1/3</sub>NbS<sub>2</sub></div>
+            <div class="pub-authors">Arielle Little, Changmin Lee, Caolan John, Spencer Doyle, Eran Maniv, Nityan L. Nair, <span class="me">Wenqin Chen</span>, Dylan Rees, Jörn W. F. Venderbos, Rafael Fernandes, James G. Analytis, Joseph Orenstein</div>
+            <div class="pub-meta"><a href="https://doi.org/10.1038/s41563-020-0681-0" target="_blank" rel="noopener">Nature Materials</a> (2020)</div>
           </li>
         </ul>
       </section>
