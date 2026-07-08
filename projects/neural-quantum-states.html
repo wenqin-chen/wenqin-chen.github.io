@@ -55,16 +55,15 @@
           exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
           wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
 
-        <p>I implemented the entire solver from scratch in JAX — no NQS library underneath. The one
-          borrowed idea is the backbone: the electron-token <strong>self-attention</strong> design of
-          DeepMind's
+        <p>I built a continuum NQS solver in JAX. The architecture is inspired by the electron-token
+          <strong>self-attention</strong> design of DeepMind's
           <a href="https://arxiv.org/abs/2211.13672" target="_blank" rel="noopener"><strong>Psiformer</strong></a>.
-          Everything around it is purpose-built for a different problem than Psiformer's molecules: a
-          <strong>periodic, complex-valued, spinful wavefunction</strong>, with Bloch spinor envelopes
-          and the generalized 2N×2N spin-orbital determinant that spin–orbit coupling demands. The
-          target is a two-dimensional electron gas with Rashba spin–orbit coupling, a Zeeman field, and
-          long-range (Ewald-summed) Coulomb interaction, optimized by variational Monte Carlo with
-          <strong>natural-gradient (MinSR)</strong> updates, running on H200 GPUs and HPC clusters.</p>
+          I extended it to a two-dimensional electron gas with Rashba spin–orbit coupling, a Zeeman
+          field, and long-range (Ewald-summed) Coulomb interaction. This makes the wavefunction
+          <strong>periodic, complex-valued, and spinful</strong>: Bloch spinor envelopes, and the
+          generalized 2N×2N spin-orbital determinant that spin–orbit coupling demands. The network is
+          optimized by variational Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates,
+          running on H200 GPUs and HPC clusters.</p>
       </div>
 
       <figure class="project-figure diagram-fig">
