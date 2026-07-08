@@ -35,10 +35,11 @@
         <p class="lead">A from-scratch self-consistent mean-field program for interacting electrons,
           on lattices and in the continuum: a linear-response → instability → self-consistency →
           band-topology pipeline, validated at every stage.</p>
-        <ul class="meta-row">
-          <li><b>Role</b>: Solo developer &amp; researcher</li>
-          <li><b>Stack</b>: Python · NumPy / SciPy</li>
-          <li><b>Scale</b>: ~90,000 lines · 380+ tests · NERSC + Azure</li>
+        <ul class="tags accent" style="margin-top:1.4rem">
+          <li>Python · NumPy / SciPy</li><li>Self-consistent mean-field / Hartree–Fock</li>
+          <li>Linear-response theory</li><li>Pulay / DIIS mixing</li>
+          <li>Berry curvature &amp; Chern numbers</li><li>Kubo transport</li>
+          <li>Numerical convergence discipline</li><li>SLURM / NERSC HPC</li>
         </ul>
       </div>
 
@@ -50,6 +51,20 @@
       <p class="figcaption">A self-consistent solution of the solver, shown three ways: charge-density
         crystal (left), spin direction (middle), and spin amplitude (right). The interacting electron
         liquid spontaneously orders into a triangular crystal with a nontrivial spin texture.</p>
+
+      <figure class="project-figure" style="max-width:420px">
+        <img src="../assets/figures/hf-scf-flowchart.png" alt="Flowchart of the self-consistent field loop: initial order parameter, build the mean-field Hamiltonian, diagonalize over the k-grid, evaluate the new mean field, then mix and update until converged to the self-consistent solution" />
+      </figure>
+      <p class="figcaption">The core loop: a symmetry-breaking trial order is iterated through
+        build-Hamiltonian → diagonalize → re-evaluate → mix until it reaches a fixed point, a
+        stationary point of the free energy.</p>
+
+      <figure class="project-figure" style="max-width:520px">
+        <img src="../assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Neel texture: the residual falls five orders of magnitude over 29 iterations while the free energy settles" />
+      </figure>
+      <p class="figcaption">A live run at the production anchor cell: the self-consistency residual
+        (dark) falls five orders of magnitude while the free energy (teal) settles; Pulay-accelerated
+        mixing rides through the plateaus that trap plain iteration.</p>
 
       <div class="prose">
         <p>This is the mean-field engine behind my correlated-electron research. It solves the
@@ -70,37 +85,12 @@
           (a link-variable lattice formula and a twist-averaged Kubo formula) that must agree, and its
           Hall conductivity σ<sub>xy</sub>.</p>
 
-        <figure class="project-figure" style="max-width:420px">
-          <img src="../assets/figures/hf-scf-flowchart.png" alt="Flowchart of the self-consistent field loop: initial order parameter, build the mean-field Hamiltonian, diagonalize over the k-grid, evaluate the new mean field, then mix and update until converged to the self-consistent solution" />
-        </figure>
-        <p class="figcaption">The core loop: a symmetry-breaking trial order is iterated through
-          build-Hamiltonian → diagonalize → re-evaluate → mix until it reaches a fixed point, a
-          stationary point of the free energy.</p>
-
-        <figure class="project-figure" style="max-width:520px">
-          <img src="../assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Neel texture: the residual falls five orders of magnitude over 29 iterations while the free energy settles" />
-        </figure>
-        <p class="figcaption">A live run at the production anchor cell: the self-consistency residual
-          (dark) falls five orders of magnitude while the free energy (teal) settles; Pulay-accelerated
-          mixing rides through the plateaus that trap plain iteration.</p>
-
         <p>The emphasis throughout is <strong>numerical rigor</strong>: χ₀ is checked against the
           analytic 2D Lindhard function, the Chern machinery is benchmarked on an exactly solvable
           model before it touches research data, cross-grid stability is required for every topology
           claim, and no energy ordering is trusted before basis- and k-grid convergence. Campaigns run
           at scale (hundreds of self-consistent solutions per parameter scan) on NERSC's Perlmutter
           (SLURM, resume-safe checkpointing) and Azure cloud nodes.</p>
-
-        <h2>What it demonstrates</h2>
-        <ul class="tags accent">
-          <li>Python · NumPy / SciPy</li><li>Self-consistent mean-field / Hartree–Fock</li>
-          <li>Linear-response theory</li><li>Pulay / DIIS mixing</li>
-          <li>Berry curvature &amp; Chern numbers</li><li>Kubo transport</li>
-          <li>Numerical convergence discipline</li><li>SLURM / NERSC HPC</li>
-        </ul>
-
-        <div class="callout"><strong>Status.</strong> A computational-methods showcase; the research
-          physics results are unpublished and deliberately omitted. Code to be released later.</div>
 
         <div class="link-row">
           <span class="btn disabled" aria-disabled="true">Code: coming soon</span>
