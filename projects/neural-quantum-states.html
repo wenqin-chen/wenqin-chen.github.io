@@ -36,7 +36,9 @@
           variational, GPU-accelerated, and built stage by stage against exact references.</p>
         <ul class="tags accent" style="margin-top:1.4rem">
           <li>JAX</li><li>Transformers / attention</li><li>Variational Monte Carlo</li>
-          <li>Natural-gradient optimization (SR / MinSR)</li><li>GPU (H200) &amp; SLURM / HPC</li>
+          <li>Natural-gradient optimization (SR / MinSR)</li>
+          <li>Physics-informed inductive biases</li><li>Ablation studies</li>
+          <li>GPU (H200) &amp; SLURM / HPC</li>
           <li>Reproducible research code</li><li>pytest</li>
         </ul>
       </div>
@@ -153,7 +155,9 @@
       <div class="prose">
         <p>The quantum many-body problem, finding the ground state of many interacting electrons, is
           exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
-          wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
+          wavefunction as a neural network and optimizing it with variational Monte Carlo. There is
+          no dataset: <strong>the loss function is the physics itself</strong>, the variational
+          energy of the trial state.</p>
 
         <p>I built a continuum NQS solver in JAX. The architecture is inspired by the electron-token
           <strong>self-attention</strong> design of DeepMind's
@@ -164,16 +168,26 @@
           variational Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates, running on
           UW's Tillicum H200 GPU cluster and Google Cloud Platform.</p>
 
+        <p>To an ML engineer, the training loop is familiar territory. The energy gradient is a
+          <strong>score-function (REINFORCE-style) estimator</strong> with a variance-reducing
+          baseline, and the <strong>natural-gradient (Fisher) update</strong> is solved in sample
+          space through a <strong>kernel-trick identity</strong> (MinSR), which is what makes
+          second-order optimization affordable for the full network. Robustness comes from the
+          standard toolkit: <strong>zero-initialization</strong> so the network starts exactly at a
+          validated reference state, <strong>learning-rate annealing</strong>,
+          <strong>outlier-robust (median-MAD) clipping</strong>, <strong>early stopping</strong>
+          with dedicated unbiased evaluation passes, and <strong>multi-seed restarts</strong>.</p>
+
         <p>Before trusting the network with physics, I put the architecture through verification
           against <strong>exact diagonalization</strong> of the same Hamiltonian. The trained network
           lands <strong>0.7 mHa above the exact ground state at two electrons, within Monte-Carlo
           noise</strong> (96% of the correlation energy). Every design choice is grounded in a
-          published precedent or a theorem, and a size-scaling ablation selected the production
+          published precedent or a theorem, and a <strong>size-scaling ablation</strong> selected the production
           ansatz. The convergence panel above shows a production run at 18 electrons: several
           competing candidate states, each optimized to a tight energy plateau and compared.</p>
 
         <p>The trained network finds a skyrmion crystal as a locally stable state, shown in the figure
-          above. Optimized from a Hartree–Fock mean-field seed, the texture <strong>does not
+          above. <strong>Warm-started</strong> from a Hartree–Fock mean-field seed, the texture <strong>does not
           melt</strong>, and its winding survives correlations intact. Although
           <strong>nearly degenerate with a uniform quantum fluid</strong>, the skyrmion crystal remains
           a competitive, well-defined phase.</p>
