@@ -193,7 +193,7 @@ def _texture_panel(ax, positions, texture, title):
     ax.set_xlim(positions[:, 0].min() - 0.9, positions[:, 0].max() + 0.9)
     ax.set_ylim(positions[:, 1].min() - 1.1, positions[:, 1].max() + 1.6)
     ax.axis("off")
-    ax.set_title(title, fontsize=27, color=INK, pad=10)
+    ax.set_title(title, fontsize=30, color=INK, pad=10)
     return norm
 
 
@@ -206,7 +206,7 @@ def build_textures(path: Path) -> None:
     norm = _texture_panel(ax_r, positions, DATA["converged"], "converged")
 
     # SCF arrow between the panels
-    fig.text(0.4535, 0.57, "SCF", ha="center", fontsize=27,
+    fig.text(0.4535, 0.57, "SCF", ha="center", fontsize=30,
              fontweight="bold", color=INK)
     arr = FancyArrowPatch((0.426, 0.48), (0.481, 0.48),
                           transform=fig.transFigure, arrowstyle="-|>",
@@ -217,7 +217,7 @@ def build_textures(path: Path) -> None:
     sm = plt.cm.ScalarMappable(cmap=SZ_CMAP, norm=norm)
     cbar = fig.colorbar(sm, cax=cax, ticks=[-0.7, 0.0, 0.7])
     cbar.ax.tick_params(labelsize=16)
-    cbar.set_label(r"$S_z$", fontsize=21, rotation=0, labelpad=14, color=INK)
+    cbar.set_label(r"$S_z$", fontsize=30, rotation=0, labelpad=16, color=INK)
 
     fig.savefig(path, facecolor="white")
     plt.close(fig)
