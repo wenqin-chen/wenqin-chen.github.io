@@ -81,7 +81,7 @@ def build_flowchart(path: Path) -> None:
 
     box(cx, y_seed, 40, 9.6, ORANGE, "#fdebd8", [
         (r"Initial order parameter  $m^{\,0}$", bold),
-        ("a symmetry-breaking trial state", note),
+        ("a symmetry-breaking trial order", note),
     ])
     box(cx, y_ham, 46, 9.6, INK, BOX_BG, [
         ("Build the mean-field Hamiltonian", bold),
@@ -91,9 +91,10 @@ def build_flowchart(path: Path) -> None:
         (r"Diagonalize over the $k$-grid", bold),
         (r"$H[m]\,|\psi_{nk}\rangle = \varepsilon_{nk}\,|\psi_{nk}\rangle$", math),
     ])
-    box(cx, y_spin, 46, 9.6, INK, BOX_BG, [
+    box(cx, y_spin, 46, 12.0, INK, BOX_BG, [
         ("Evaluate the new mean field", bold),
-        (r"$m' = T[m] = \langle \hat{O} \rangle_{\mathrm{occ}}$", math),
+        (r"$m' = T[m] = \langle \hat{O} \rangle_{H[m]}$", math),
+        (r"$\mu$ fixed by the target filling $n$", note),
     ])
     box(cx, y_saddle, 46, 9.6, TEAL, "#ddeef5", [
         ("Self-consistent solution", dict(fontsize=15.5, fontweight="bold", color=TEAL)),
@@ -124,8 +125,8 @@ def build_flowchart(path: Path) -> None:
 
     arrow((cx, y_seed - 5.6), (cx, y_ham + 5.6))
     arrow((cx, y_ham - 5.6), (cx, y_diag + 5.6))
-    arrow((cx, y_diag - 5.6), (cx, y_spin + 5.6))
-    arrow((cx, y_spin - 5.6), (cx, y_conv + dh + 0.6))
+    arrow((cx, y_diag - 5.6), (cx, y_spin + 6.8))
+    arrow((cx, y_spin - 6.8), (cx, y_conv + dh + 0.6))
     arrow((cx, y_conv - dh - 0.6), (cx, y_saddle + 5.6))
     # no -> mix -> back to Hamiltonian (right-angle path)
     ax.plot([cx + dw + 0.6, cx_mix], [y_conv, y_conv], color=INK, lw=2.6, zorder=2)
