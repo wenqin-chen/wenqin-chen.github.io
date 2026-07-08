@@ -243,6 +243,11 @@ p { margin: 0 0 1rem; }
 .project-figure { margin: 40px 0 12px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
 .project-figure img { width: 100%; }
 .figcaption { font-size: .86rem; color: var(--muted); margin: 12px 2px 0; max-width: var(--prose); }
+/* two figures side by side, each with its own caption */
+.figure-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin: 40px 0 12px; max-width: 820px; }
+.figure-pair .project-figure { margin: 0; }
+.figure-pair .figcaption { margin-top: 10px; }
+@media (max-width: 620px) { .figure-pair { grid-template-columns: 1fr; } }
 /* multi-panel figure row — e.g. a texture triptych */
 .figure-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 40px 0 12px; }
 .figure-row .cell { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
