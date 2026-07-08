@@ -58,10 +58,9 @@
         <p>I built a continuum NQS solver in JAX. The architecture is inspired by the electron-token
           <strong>self-attention</strong> design of DeepMind's
           <a href="https://arxiv.org/abs/2211.13672" target="_blank" rel="noopener"><strong>Psiformer</strong></a>.
-          I extended it to a two-dimensional electron gas with Rashba spin–orbit coupling, a Zeeman
-          field, and long-range (Ewald-summed) Coulomb interaction. This makes the wavefunction
-          <strong>periodic, complex-valued, and spinful</strong>: Bloch spinor envelopes, and the
-          generalized 2N×2N spin-orbital determinant that spin–orbit coupling demands. The network is
+          I extended it to a two-dimensional electron gas with spin–orbit coupling, a Zeeman field,
+          and long-range (Ewald-summed) Coulomb interaction. Unlike the molecular Psiformer, the
+          wavefunction here is <strong>periodic, complex-valued, and spinful</strong>. The network is
           optimized by variational Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates,
           running on H200 GPUs and HPC clusters.</p>
       </div>
@@ -195,7 +194,7 @@
             the construction a recent theorem singles out as the correct one — and its spin–orbit local
             energy is certified by a machine-precision zero-variance test.</li>
           <li><strong>Seeding as a science, not a trick.</strong> The orbitals warm-start from
-            Hartree–Fock / Rashba spinors — and the verification runs showed <em>why</em> this matters:
+            Hartree–Fock spinors — and the verification runs showed <em>why</em> this matters:
             the ordered state's basin needs the mean-field texture's full harmonic content, and a
             first-harmonic sketch of the same state fails outright. Competing candidate states are kept
             seed-agnostic, so the final comparison is decided by energy, not by the starting guess.</li>
