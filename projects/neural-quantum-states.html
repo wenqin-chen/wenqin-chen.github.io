@@ -55,11 +55,13 @@
           exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
           wavefunction as a neural network and optimizing it with variational Monte Carlo.</p>
 
-        <p>I built a continuum NQS solver from the ground up: a <strong>Psiformer / transformer
-          wavefunction</strong> for a two-dimensional electron gas with Rashba spin–orbit coupling, a
-          Zeeman field, and long-range (Ewald-summed) Coulomb interaction, optimized by variational
-          Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates, running on H200 GPUs and
-          HPC clusters.</p>
+        <p>I implemented the entire solver from scratch in JAX — no NQS library underneath. The
+          architecture follows DeepMind's
+          <a href="https://arxiv.org/abs/2211.13672" target="_blank" rel="noopener"><strong>Psiformer</strong></a>
+          — a transformer wavefunction — which I extended to a two-dimensional electron gas with Rashba
+          spin–orbit coupling, a Zeeman field, and long-range (Ewald-summed) Coulomb interaction,
+          optimized by variational Monte Carlo with <strong>natural-gradient (MinSR)</strong> updates,
+          running on H200 GPUs and HPC clusters.</p>
       </div>
 
       <figure class="project-figure diagram-fig">
@@ -180,9 +182,10 @@
 
         <h2>My contribution</h2>
         <p>Neural quantum states are an established idea — I build directly on DeepMind's
-          <strong>FermiNet</strong> and <strong>Psiformer</strong>. The hard part of this kind of work
-          isn't the network; it's making it <em>trainable and correct</em> for one specific, difficult
-          problem. That's what I added:</p>
+          <a href="https://arxiv.org/abs/1909.02487" target="_blank" rel="noopener"><strong>FermiNet</strong></a> and
+          <a href="https://arxiv.org/abs/2211.13672" target="_blank" rel="noopener"><strong>Psiformer</strong></a>.
+          The hard part of this kind of work isn't the network; it's making it <em>trainable and
+          correct</em> for one specific, difficult problem. That's what I added:</p>
         <ul>
           <li><strong>Getting antisymmetry right under spin–orbit coupling.</strong> With SOC, spin is
             not conserved, so the standard spin-up × spin-down block determinant is simply wrong. The
