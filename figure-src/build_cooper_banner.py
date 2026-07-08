@@ -44,8 +44,10 @@ PANEL_D_LABEL_MASK = (0, 0, 170, 145)
 FIG1_THRESHOLD = 12
 FIG1_CROP_PAD = (30, 25, 30, 20)
 PANEL_HEIGHT = 760
-OUTER_PAD = 24
-PANEL_GAP = 28
+V_PAD = 20                   # top/bottom padding of both panels
+COOPER_SIDE_PAD = 150        # left/right whitespace of the Cooper panel
+PANEL_GAP = 130              # whitespace between Fig1 and panel (d)
+PHONON_SIDE_FRACTION = 0.14  # phonon whitespace on each side (of canvas width)
 
 
 def flatten_to_white(image: Image.Image) -> Image.Image:
@@ -110,18 +112,19 @@ def main() -> None:
 
     panels = [resize_to_height(fig1, PANEL_HEIGHT), resize_to_height(panel_d, PANEL_HEIGHT)]
     content_width = sum(panel.width for panel in panels) + PANEL_GAP
-    phonon = resize_to_width(phonon, content_width)
 
-    width = content_width + OUTER_PAD * 2
-    cooper_panel = Image.new("RGB", (width, PANEL_HEIGHT + OUTER_PAD * 2), "white")
+    width = content_width + COOPER_SIDE_PAD * 2
+    cooper_panel = Image.new("RGB", (width, PANEL_HEIGHT + V_PAD * 2), "white")
 
-    x = OUTER_PAD
+    x = COOPER_SIDE_PAD
     for panel in panels:
-        cooper_panel.paste(panel, (x, OUTER_PAD))
+        cooper_panel.paste(panel, (x, V_PAD))
         x += panel.width + PANEL_GAP
 
-    phonon_panel = Image.new("RGB", (width, phonon.height + OUTER_PAD * 2), "white")
-    phonon_panel.paste(phonon, (OUTER_PAD, OUTER_PAD))
+    phonon_side = round(width * PHONON_SIDE_FRACTION)
+    phonon = resize_to_width(phonon, width - 2 * phonon_side)
+    phonon_panel = Image.new("RGB", (width, phonon.height + V_PAD * 2), "white")
+    phonon_panel.paste(phonon, (phonon_side, V_PAD))
 
     ASSETS.mkdir(parents=True, exist_ok=True)
     cooper_panel.save(COOPER_OUTPUT, optimize=True)
