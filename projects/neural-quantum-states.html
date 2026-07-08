@@ -46,11 +46,8 @@
       <figure class="project-figure diagram-fig">
         <img src="../assets/figures/nqs-2panel.png" alt="Left: a skyrmion-crystal spin texture from the trained network, out-of-plane spin in colour and in-plane spin as arrows, with the skyrmion core and magnetic cell labelled. Right: four candidate states each optimized by variational Monte Carlo, converging to their energy plateaus over the 18-electron training run." />
       </figure>
-      <p class="figcaption"><strong>Left:</strong> a spin texture from the trained network: a skyrmion
-        crystal, with out-of-plane spin in colour and in-plane spin as arrows winding around each core
-        (the green rhombus is one magnetic cell). <strong>Right:</strong> the 18-electron training run:
-        four candidate states, each optimized by natural-gradient (MinSR) variational Monte Carlo,
-        converging to their energy plateaus.</p>
+      <p class="figcaption"><strong>Left:</strong> a skyrmion crystal from the trained network.
+        <strong>Right:</strong> four candidate states converging to their energy plateaus (18 electrons).</p>
 
       <figure class="project-figure diagram-fig">
         <div class="diagram-wrap">
@@ -150,7 +147,8 @@
     </svg>
         </div>
       </figure>
-      <p class="figcaption"><em>In plain terms: a transformer defines the wavefunction, and the training loop tunes it to minimize the energy.</em> The full pipeline: a transformer wavefunction (left) trained by variational Monte Carlo with MinSR natural-gradient updates (right). Learnable components in red, fixed physics in grey; the production ansatz sums four generalized determinants and carries a flexible Jastrow prefactor (not drawn).</p>
+      <p class="figcaption">A transformer wavefunction (left) trained by variational Monte Carlo with
+        MinSR natural-gradient updates (right); the flexible Jastrow prefactor is not drawn.</p>
 
       <div class="prose">
         <p>The quantum many-body problem, finding the ground state of many interacting electrons, is
