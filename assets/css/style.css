@@ -100,7 +100,7 @@ p { margin: 0 0 1rem; }
 }
 .top-bar-inner {
   max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 52px;
-  display: flex; align-items: center; justify-content: flex-end;
+  display: flex; align-items: center; justify-content: center;
 }
 .top-links { display: flex; gap: 26px; }
 .top-links a { color: var(--ink-2); font-size: .95rem; font-weight: 550; }
