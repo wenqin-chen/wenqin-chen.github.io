@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Attention-Based Neural Quantum States — Wenqin Chen</title>
-  <meta name="description" content="A transformer neural-network wavefunction solving the quantum many-body problem via variational Monte Carlo, validated to exact-diagonalization precision on GPUs." />
+  <meta name="description" content="A transformer neural-network wavefunction solving the quantum many-body problem via variational Monte Carlo — built stage by stage against exact-diagonalization and quantum Monte Carlo references, trained on H200 GPUs." />
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -30,10 +30,10 @@
       <a class="back" href="../#projects">← All projects</a>
 
       <div class="project-hero">
-        <p class="eyebrow">Machine learning · Neural quantum states</p>
+        <p class="eyebrow">Machine learning for science</p>
         <h1>Attention-Based Neural Quantum States</h1>
         <p class="lead">A transformer neural network that solves the quantum many-body problem —
-          variational, GPU-accelerated, and validated to exact-diagonalization precision.</p>
+          variational, GPU-accelerated, and built stage by stage against exact references.</p>
         <ul class="meta-row">
           <li><b>Role</b> — Solo developer &amp; researcher</li>
           <li><b>Stack</b> — JAX · NetKet</li>
@@ -164,12 +164,14 @@
 
       <div class="prose">
 
-        <p>The project is structured as an <strong>eleven-notebook ladder</strong> that adds one piece of
-          physics at a time and validates each stage against an exact reference — exact diagonalization
-          or published quantum Monte Carlo. At small sizes the network reaches exact-diagonalization
-          precision and beats Hartree–Fock by a wide margin; the convergence panel above shows the
-          scaled-up production run at 18 electrons, where several competing candidate states are each
-          optimized to a tight energy plateau.</p>
+        <p>The project is structured as a <strong>ten-notebook ladder</strong> — nine pedagogical stages
+          that add one piece of physics at a time, plus a production sweep — and every stage is validated
+          against an exact reference: exact diagonalization, published quantum Monte Carlo, or a
+          Hellmann–Feynman consistency check. In the full-physics regime the trained network recovers
+          <strong>96% of the exact correlation energy</strong> at two electrons and sits
+          <strong>36 mHa per electron below Hartree–Fock</strong> at four; the convergence panel above
+          shows the scaled-up production run at 18 electrons, where several competing candidate states
+          are each optimized to a tight energy plateau and compared.</p>
 
         <h2>My contribution</h2>
         <p>Neural quantum states are an established idea — I build directly on DeepMind's
@@ -177,17 +179,22 @@
           isn't the network; it's making it <em>trainable and correct</em> for one specific, difficult
           problem. That's what I added:</p>
         <ul>
-          <li><strong>A training-stability method.</strong> At this problem's scale the optimizer gets
-            trapped in the wrong solution — a common failure mode for these networks. Initializing the
-            network from a cheap mean-field (Hartree–Fock) starting point reliably steers it into the
-            right basin, turning an otherwise-stuck run into one that beats the mean-field baseline, on a
-            ladder validated against exact diagonalization.</li>
-          <li><strong>A harder problem class.</strong> I extended these solvers from spin-simple systems
-            to ones with strong <strong>spin–orbit coupling</strong> and multiple orbitals — the
-            ingredients the magnetism I study actually requires.</li>
-          <li><strong>Conclusions scoped to the evidence.</strong> Every stage is checked against an
-            exact reference, and the physics verdict is stated only as strongly as the data support — a
-            candidate ordered phase turns out to be only marginally stable, and is reported as such.</li>
+          <li><strong>A harder problem class.</strong> Published continuum NQS with spin–orbit coupling
+            stops at the single-orbital Rashba gas. I extended the architecture to a
+            <strong>multi-orbital</strong> electron gas with crystal field, atomic and Rashba spin–orbit,
+            and Ewald-summed Coulomb — the ingredients the magnetism I study actually requires, since
+            the easy-axis anisotropy that stabilizes it only emerges from the multi-orbital structure.</li>
+          <li><strong>A training-stability method.</strong> Once spin–orbit coupling enters, the
+            optimization landscape grows degenerate basins that trap random or hand-engineered
+            initializations — the run converges, but to the wrong state. Seeding the orbital networks
+            with filled <strong>Hartree–Fock spin-orbitals as residual starting points</strong> proved
+            the single most effective fix; a companion scaling rule (shrink the residual coefficient as
+            ~1/N) keeps the correction bounded as electron count grows.</li>
+          <li><strong>Verification as a design principle.</strong> Every stage is checked against an
+            exact reference before the next is built — down to a machine-precision zero-variance test
+            certifying the spin–orbit local energy. The payoff: a verdict you can trust when it matters.
+            Here the network <strong>overturned the mean-field prediction</strong> — the candidate
+            ordered phase turned out to be metastable rather than the true ground state.</li>
         </ul>
 
         <h2>What it demonstrates</h2>
