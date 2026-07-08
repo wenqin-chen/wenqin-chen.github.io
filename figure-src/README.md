@@ -7,9 +7,12 @@ the Hall Crystal and condensed-matter homepage banners read local source figures
 - `build_nqs_figure.py` — the plotting script.
 - `build_qc_tetron_crop.py` — regenerates the quantum-computing card's Tetron-panel crop from `assets/figures/qc-fig-tetron.png`.
 - `build_qc_bloch_card.py` — pads the quantum-computing Bloch-sphere card crop so its rendered height matches the braiding panel.
-- `build_hf_banner.py` — crops the Hall Crystal S8b texture plot and adds compact colorbars for the homepage Hartree-Fock banner.
+- `build_hf_banner.py` — crops the Hall Crystal S8b texture plot and adds compact colorbars for the homepage Hartree-Fock banner (superseded on the homepage by the SCF trio below; kept for reuse).
+- `build_scf_figures.py` — rebuilds the three SCF-method figures on the Hartree-Fock banner (flowchart, convergence, seed→SkX textures) from `scf_figure_data.npz`. Site edits vs. the deck originals: convergence title is just "SCF convergence" with the tolerance annotation removed; the textures suptitle is removed.
+- `extract_scf_data.py` — one-shot that regenerates `scf_figure_data.npz` by re-running the anchor-cell canted-Néel SCF (n=0.05, α=1.4, A=0.3, L=9, p=2, I/Ic=1.045, tol=1e-5, κ_nk=24) with the research solver in `~/Documents/Hall Crystal/projects/` (read-only; ~13 min serial).
 - `build_cooper_banner.py` — combines Cooper-pair figures with `Figure-1.pdf` from the phonon-magnetism project.
 - `figure_data.npz` — the minimal data the figure needs (~22 KB), extracted once from the research run.
+- `scf_figure_data.npz` — the SCF-figure data (~4 KB): site positions, seed + converged textures, per-iteration residual and free-energy histories (29 iterations, final residual 1.0e-5, F/site −0.4387).
 - `nqs_texture_convergence_2panel.png`, `nqs_texture_banner.png` — full-resolution source plots.
 
 ## Regenerate
@@ -33,7 +36,17 @@ python3 build_qc_bloch_card.py
 ```
 Requires `numpy` and `Pillow`. This rewrites `../assets/figures/qc-crop-bloch.png`.
 
-For the Hartree-Fock homepage banner:
+For the Hartree-Fock homepage banner (the SCF-method trio):
+```
+python3 build_scf_figures.py
+```
+Requires `numpy` + `matplotlib`; fully self-contained (reads only `scf_figure_data.npz`).
+This rewrites `../assets/figures/hf-scf-flowchart.png`, `hf-scf-convergence.png`,
+and `hf-scf-textures.png`. To re-extract the data from a fresh solver run
+(only needed if the run recipe changes), `python3 extract_scf_data.py` —
+that one does read the research repo.
+
+The older single-image banner:
 ```
 python3 build_hf_banner.py
 ```
