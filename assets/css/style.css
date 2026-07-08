@@ -265,12 +265,10 @@ p { margin: 0 0 1rem; }
 .about ul li { padding-left: 1.4em; position: relative; margin-bottom: .55rem; color: var(--ink-2); }
 .about ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 .pub-list { list-style: none; padding: 0; margin: 0; }
-.pub-list li { padding: 16px 0; border-top: 1px solid var(--line); }
-.pub-list li:first-child { border-top: 0; }
+.pub-list li { padding: 8px 0; }
 .pub-title { color: var(--ink); font-weight: 600; }
-.pub-authors { color: var(--ink-2); font-size: .94rem; line-height: 1.5; margin-top: 4px; }
+.pub-authors { color: var(--ink-2); font-size: .94rem; line-height: 1.5; margin-top: 2px; }
 .pub-authors .me { color: var(--accent); font-weight: 700; }
-.pub-meta { color: var(--muted); font-size: .92rem; }
 
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--line); background: var(--bg-2); padding: 48px 0; margin-top: 0; }
