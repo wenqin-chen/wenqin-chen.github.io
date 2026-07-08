@@ -190,8 +190,8 @@ def _texture_panel(ax, positions, texture, title):
               color=INK, width=0.0095, headwidth=3.8, headlength=4.6,
               headaxislength=4.1, zorder=3)
     ax.set_aspect("equal")
-    ax.set_xlim(positions[:, 0].min() - 0.9, positions[:, 0].max() + 0.9)
-    ax.set_ylim(positions[:, 1].min() - 1.1, positions[:, 1].max() + 1.6)
+    ax.set_xlim(positions[:, 0].min() - 0.55, positions[:, 0].max() + 0.55)
+    ax.set_ylim(positions[:, 1].min() - 0.7, positions[:, 1].max() + 0.85)
     ax.axis("off")
     ax.set_title(title, fontsize=30, color=INK, pad=10)
     return norm
@@ -199,25 +199,27 @@ def _texture_panel(ax, positions, texture, title):
 
 def build_textures(path: Path) -> None:
     positions = DATA["positions"]
-    fig = plt.figure(figsize=(16.0, 7.6), dpi=100)
-    ax_l = fig.add_axes([0.015, 0.04, 0.40, 0.86])
-    ax_r = fig.add_axes([0.50, 0.04, 0.40, 0.86])
+    # tight canvas: panels take ~46% of the width each, small zigzag gap for
+    # the SCF arrow, colorbar tucked at the right edge with Sz on top
+    fig = plt.figure(figsize=(14.4, 5.9), dpi=100)
+    ax_l = fig.add_axes([0.002, 0.015, 0.462, 0.85])
+    ax_r = fig.add_axes([0.488, 0.015, 0.462, 0.85])
     _texture_panel(ax_l, positions, DATA["seed"], "initial")
     norm = _texture_panel(ax_r, positions, DATA["converged"], "converged")
 
-    # SCF arrow between the panels
-    fig.text(0.4535, 0.57, "SCF", ha="center", fontsize=30,
+    # SCF arrow between the panels (sits in the parallelograms' empty corners)
+    fig.text(0.4755, 0.60, "SCF", ha="center", fontsize=30,
              fontweight="bold", color=INK)
-    arr = FancyArrowPatch((0.426, 0.48), (0.481, 0.48),
+    arr = FancyArrowPatch((0.4425, 0.475), (0.5085, 0.475),
                           transform=fig.transFigure, arrowstyle="-|>",
                           mutation_scale=32, linewidth=2.8, color="#4a5b6e")
     fig.add_artist(arr)
 
-    cax = fig.add_axes([0.925, 0.29, 0.013, 0.36])
+    cax = fig.add_axes([0.944, 0.24, 0.013, 0.44])
     sm = plt.cm.ScalarMappable(cmap=SZ_CMAP, norm=norm)
     cbar = fig.colorbar(sm, cax=cax, ticks=[-0.7, 0.0, 0.7])
     cbar.ax.tick_params(labelsize=16)
-    cbar.set_label(r"$S_z$", fontsize=30, rotation=0, labelpad=16, color=INK)
+    cax.set_title(r"$S_z$", fontsize=30, color=INK, pad=12)
 
     fig.savefig(path, facecolor="white")
     plt.close(fig)
