@@ -182,11 +182,13 @@ def _texture_panel(ax, positions, texture, title):
         ax.add_patch(Circle((x, y), 0.30, facecolor=SZ_CMAP(norm(z)),
                             edgecolor=INK, linewidth=0.9, zorder=2))
     inplane = np.hypot(texture[:, 0], texture[:, 1])
-    scale = float(inplane.max()) / 0.78 if inplane.max() > 1e-9 else 1.0
+    # longest arrow ~1.0 lattice constants, drawn thick, so the in-plane
+    # winding stays readable at banner size
+    scale = float(inplane.max()) if inplane.max() > 1e-9 else 1.0
     ax.quiver(positions[:, 0], positions[:, 1], texture[:, 0], texture[:, 1],
               angles="xy", scale_units="xy", scale=scale, pivot="middle",
-              color=INK, width=0.006, headwidth=4.2, headlength=5.2,
-              headaxislength=4.6, zorder=3)
+              color=INK, width=0.0095, headwidth=3.8, headlength=4.6,
+              headaxislength=4.1, zorder=3)
     ax.set_aspect("equal")
     ax.set_xlim(positions[:, 0].min() - 0.9, positions[:, 0].max() + 0.9)
     ax.set_ylim(positions[:, 1].min() - 1.1, positions[:, 1].max() + 1.6)
