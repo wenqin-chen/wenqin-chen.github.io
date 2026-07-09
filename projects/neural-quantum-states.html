@@ -168,12 +168,12 @@
 
         <p>To an ML engineer, the training loop is familiar territory. The energy gradient is a
           <strong>score-function (REINFORCE-style) estimator</strong> with a variance-reducing
-          baseline, and the <strong>natural-gradient (Fisher) update</strong> is solved in sample
+          baseline, and the natural-gradient (Fisher) update is solved in sample
           space through a <strong>kernel-trick identity</strong> (MinSR), which is what makes
           second-order optimization affordable for the full network. Robustness comes from the
-          standard toolkit: <strong>zero-initialization</strong> so the network starts exactly at a
-          validated reference state, <strong>learning-rate annealing</strong>,
-          <strong>outlier-robust (median-MAD) clipping</strong>, <strong>early stopping</strong>
+          standard toolkit: zero-initialization so the network starts exactly at a
+          validated reference state, learning-rate annealing,
+          outlier-robust (median-MAD) clipping, <strong>early stopping</strong>
           with dedicated unbiased evaluation passes, and <strong>multi-seed restarts</strong>.</p>
 
         <p>Before trusting the network with physics, I put the architecture through verification
