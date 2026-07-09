@@ -153,9 +153,9 @@
       <div class="prose">
         <p>The quantum many-body problem, finding the ground state of many interacting electrons, is
           exponentially hard. <strong>Neural quantum states (NQS)</strong> attack it by representing the
-          wavefunction as a neural network and optimizing it with variational Monte Carlo. There is
-          no dataset: <strong>the loss function is the physics itself</strong>, the variational
-          energy of the trial state.</p>
+          wavefunction as a neural network and optimizing it with variational Monte Carlo. The
+          network is <strong>self-supervised</strong>, the data is <strong>self-generative</strong>,
+          and the loss function is the variational energy.</p>
 
         <p>I built a continuum NQS solver in JAX. The architecture is inspired by the electron-token
           <strong>self-attention</strong> design of DeepMind's
