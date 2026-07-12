@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing HPC Runs Before Launch · Wenqin Chen</title>
+  <meta name="description" content="A data science case study on my own research computing: a 2,127-run telemetry warehouse (DuckDB), a leakage-aware cost model, and a calibrated walltime policy via conformal prediction. Open source, with a CI-gated confidentiality audit." />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260708" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Wenqin Chen<span class="dot">.</span></a>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="../#projects">Projects</a>
+          <a href="../#about">About</a>
+          <a href="../#publications">Publications</a>
+          <a href="../assets/Wenqin_Chen_CV.pdf" target="_blank" rel="noopener">CV</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <a class="back" href="../#projects">← All projects</a>
+
+      <div class="project-hero">
+        <p class="eyebrow">Data science</p>
+        <h1>Pricing HPC Runs Before Launch</h1>
+        <p class="lead">Every solver run on a cluster costs real wall-clock time, and nearly half of
+          my flagship compute was going to runs that never converged. So I treated my own research
+          computing as a data problem: two years of telemetry from three solver codebases, assembled
+          into a queryable warehouse and turned into a cost model and a calibrated scheduling policy.
+          The pipeline, the data, and every analysis decision are public.</p>
+        <ul class="tags accent" style="margin-top:1.4rem">
+          <li>DuckDB · SQL</li><li>pandas · scikit-learn</li>
+          <li>Leakage-aware evaluation</li><li>Conformal prediction</li>
+          <li>Data-quality auditing</li><li>CI-gated data redaction</li>
+        </ul>
+      </div>
+
+      <figure class="project-figure">
+        <img src="../assets/figures/hpc-cost-banner.png" alt="Left: histogram of wall-clock cost for 2,127 solver runs spanning seconds to hours on a log scale. Right: predicted versus actual cost on campaigns the model never saw, colored by solver codebase, scattered around the diagonal." />
+      </figure>
+      <p class="figcaption">The warehouse and the model. Left: 2,127 runs spanning four orders of
+        magnitude in cost. Right: out-of-campaign predictions from the gradient-boosted cost model
+        against the actual cost; the diagonal is a perfect prediction.</p>
+
+      <div class="prose">
+        <p>The dataset is itself an engineering deliverable. The research behind the telemetry is
+          unpublished, so every export passes through a <strong>redaction contract</strong>: column
+          whitelists, salted opaque ids for physical parameters, anonymized campaign codes, and a
+          <strong>leak-audit pytest suite</strong> that scans every string value against forbidden
+          patterns and runs in CI on every push. What leaves the private repos is solver telemetry
+          only: iterations, residuals, wall-clock, grid sizes, seed families, machines.</p>
+
+        <p>The data-quality pass drives everything downstream, and its decisions are recorded inline
+          in the notebooks. Runs that hit their iteration budget are <strong>censored</strong> (their
+          recorded cost is only a lower bound); in one source that is a third of the runs holding two
+          thirds of the wall-hours, so they are kept and flagged rather than dropped. Multi-seed jobs
+          share one timer, so their per-run costs are apportioned and stress-tested. And the two
+          tables that look joinable share exactly one campaign code out of 34 and 78, so the analysis
+          compares distributions instead of forcing a fuzzy join.</p>
+
+        <p>The model is evaluated the honest way. Runs within a campaign are near-duplicates, and a
+          random cross-validation split lets the model score itself on copies of its training rows:
+          the same gradient-boosted model reads <strong>R² = 0.82 under a random split but 0.21
+          under leave-campaign-out</strong>. That gap is leakage, measured. Reported honestly, the
+          model is typically 2.8x off pooled (2.5x on the dominant source), with fold-level spread
+          from 1.4x on large homogeneous campaigns to nearly useless on one-off campaigns. Feature
+          importance is measured on held-out campaigns too, which shows the operator-set knobs
+          (iteration budget, tolerance) acting as proxies for expected difficulty, while the k-grid
+          density is the physical driver: cost scales like its 6.4th power.</p>
+
+        <p>The payoff is a scheduling policy with a guarantee. <strong>Split conformal
+          prediction</strong> turns point predictions into walltime requests that hit a chosen safety
+          level: 95% empirical coverage at 4.6x the prediction, replacing the measured 17x blanket
+          cushion in my actual scheduler requests, with the cold-start regime honestly scoped out
+          (a genuinely new campaign needs roughly 100x). A planned part 3 replays this policy and a
+          cheap-first seed ordering against the recorded launch history.</p>
+
+        <div class="link-row">
+          <a class="btn primary" href="https://github.com/wenqin-chen/hpc-cost-analytics" target="_blank" rel="noopener">Code, data &amp; notebooks on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="mailto:wenqinchenphy@gmail.com">wenqinchenphy@gmail.com</a>
+        <a href="https://scholar.google.com/citations?user=Eo7OIQ8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/wenqin-chen" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/wen-qin-chen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-note">© 2026 Wenqin Chen</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
