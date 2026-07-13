@@ -37,6 +37,7 @@
         <ul class="tags accent" style="margin-top:1.4rem">
           <li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li>
           <li>Natural-gradient optimization (MinSR)</li>
+          <li>Self-consistent Hartree–Fock warm starts</li>
           <li>Physics-informed inductive biases</li><li>Ablation studies</li>
           <li>GPU (H200) &amp; SLURM</li>
         </ul>
@@ -183,7 +184,37 @@
           ansatz. The convergence panel above shows a production run at 18 electrons: several
           competing candidate states, each optimized to a tight energy plateau and compared.</p>
 
-        <p>The trained network finds a <strong>skyrmion crystal</strong> as a locally stable state, shown in the figure
+        <h2>The warm start: a from-scratch Hartree–Fock engine</h2>
+
+        <p>The network does not start from random weights. Its spinor envelope is
+          <strong>warm-started from Hartree–Fock</strong>: the training begins at a validated
+          mean-field state, and the network's job is exactly the <strong>correlation energy that
+          Hartree–Fock leaves out</strong>. Those starting states come from a second from-scratch
+          solver: a Python <strong>self-consistent-field Hartree–Fock engine</strong> for the same
+          family of systems (a triangular-lattice Hubbard model with Rashba spin–orbit coupling, and
+          the continuum electron gas the NQS targets).</p>
+
+        <figure class="project-figure figure-compose">
+          <img class="tall" src="../assets/figures/hf-scf-flowchart.png" alt="Flowchart of the self-consistent field loop: start from a symmetry-breaking order parameter, build the mean-field Hamiltonian, diagonalize over the k-grid, evaluate the new mean field, then mix and update until it converges to the self-consistent fixed point" loading="lazy" />
+          <img src="../assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Néel texture: the residual falls five orders of magnitude while the free energy settles" loading="lazy" />
+          <img src="../assets/figures/hf-scf-textures.png" alt="An in-plane spin seed self-consistently grows out-of-plane skyrmion cores: initial versus converged spin textures colored by S_z" loading="lazy" />
+        </figure>
+        <p class="figcaption">The warm-start engine at a glance. <strong>Left:</strong> the
+          self-consistent loop iterates a symmetry-breaking trial order to a fixed point of the free
+          energy. <strong>Top right:</strong> a production run converges five orders of magnitude in
+          the residual. <strong>Bottom right:</strong> an in-plane seed grows out-of-plane skyrmion
+          cores; converged textures like this one become the network's starting points.</p>
+
+        <p>The engine is a competition, not a single run: each candidate phase is seeded from a
+          library of <strong>~35 magnetic textures</strong>, iterated with linear and Pulay (DIIS)
+          mixing, and the winner is chosen by <strong>energy ordering</strong> rather than by the
+          seed. Every converged state also gets a topology verdict (winding number, Chern number by
+          two independent methods that must agree, Hall conductivity). Mean-field campaigns run at
+          scale on NERSC's Perlmutter and Azure (hundreds of self-consistent solutions per parameter
+          scan), and the <strong>~7k-line, 77-test solver core is open source</strong>; see the
+          <a href="hartree-fock-solver.html">full solver write-up</a> for the numerical details.</p>
+
+        <p>The trained network finds a <strong>skyrmion crystal</strong> as a locally stable state, shown in the first figure
           above. <strong>Warm-started</strong> from a Hartree–Fock mean-field seed, the texture does not
           melt, and its winding survives correlations intact. Although
           nearly degenerate with a uniform quantum fluid, the skyrmion crystal remains
@@ -191,6 +222,7 @@
 
         <div class="link-row">
           <a class="btn primary" href="https://github.com/wenqin-chen/continuum-nqs" target="_blank" rel="noopener">Code on GitHub</a>
+          <a class="btn primary" href="https://github.com/wenqin-chen/hubbard-meanfield" target="_blank" rel="noopener">Warm-start solver on GitHub</a>
           <span class="btn ghost disabled" aria-disabled="true">Methodology paper: in preparation</span>
         </div>
       </div>

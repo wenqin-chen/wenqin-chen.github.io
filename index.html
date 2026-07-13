@@ -71,11 +71,12 @@
               <span class="proj-num">01 · Machine learning for science</span>
               <h3 class="proj-title">Attention-Based Neural Quantum States</h3>
               <p class="proj-desc">A transformer wavefunction that solves the quantum many-body problem, optimized by variational Monte Carlo, benchmarked against exact diagonalization, and trained on H200 GPUs.</p>
-              <ul class="tags"><li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li><li>GPU / HPC</li></ul>
+              <ul class="tags"><li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li><li>Hartree-Fock warm start</li><li>GPU / HPC</li></ul>
               <span class="proj-more">View project →</span>
             </div>
-            <div class="proj-fig"><img src="assets/figures/nqs-2panel.png" alt="Skyrmion-crystal spin texture and the N=18 variational-Monte-Carlo training convergence from the neural-network wavefunction" loading="lazy" /></div>
-            <div class="proj-diagram">
+            <div class="proj-media">
+              <div class="proj-fig"><img src="assets/figures/nqs-2panel.png" alt="Skyrmion-crystal spin texture and the N=18 variational-Monte-Carlo training convergence from the neural-network wavefunction" loading="lazy" /></div>
+              <div class="proj-diagram">
               <div class="diagram-wrap">
                 <svg viewBox="0 26 980 378" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
       <title>Neural quantum state: architecture and training pipeline</title>
@@ -172,6 +173,7 @@
       </g>
     </svg>
               </div>
+              </div>
             </div>
           </a>
 
@@ -205,20 +207,16 @@
             </div>
           </a>
 
-          <!-- 03 HF -->
-          <a class="proj" href="projects/hartree-fock-solver.html">
+          <!-- 03 Data science case study -->
+          <a class="proj" href="projects/hpc-cost-analytics.html">
             <div class="proj-text">
-              <span class="proj-num">03 · Computational many-body physics</span>
-              <h3 class="proj-title">Self-Consistent Hartree-Fock Solver for 2D Electron Crystals</h3>
-              <p class="proj-desc">Deciding which phase wins when interacting electrons crystallize: a from-scratch Hartree-Fock solver where dozens of candidate orders compete under one validated pipeline that ends in a band-topology verdict.</p>
-              <ul class="tags"><li>Python</li><li>Mean-field</li><li>Linear response</li><li>NERSC / SLURM</li></ul>
+              <span class="proj-num">03 · Data science</span>
+              <h3 class="proj-title">Pricing HPC Runs Before Launch: Cost Analytics on My Own Research Computing</h3>
+              <p class="proj-desc">Two years of solver telemetry (2,127 runs) turned into a DuckDB warehouse, a leakage-aware cost model, and a calibrated walltime policy: 95%-safe requests at 4.6x headroom instead of a measured 17x blanket cushion.</p>
+              <ul class="tags"><li>DuckDB · SQL</li><li>scikit-learn</li><li>Conformal prediction</li><li>Leakage-aware CV</li></ul>
               <span class="proj-more">View project →</span>
             </div>
-            <div class="proj-fig proj-fig-compose">
-              <img class="tall" src="assets/figures/hf-scf-flowchart.png" alt="Flowchart of the self-consistent field loop: start from a symmetry-breaking order parameter, build the mean-field Hamiltonian, diagonalize over the k-grid, evaluate the new mean field, then mix and update until it converges to the self-consistent fixed point" loading="lazy" />
-              <img src="assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Néel texture: the residual drops below the 1e-5 tolerance while the free energy settles" loading="lazy" />
-              <img src="assets/figures/hf-scf-textures.png" alt="An in-plane spin seed self-consistently grows out-of-plane skyrmion cores: initial versus converged spin textures colored by S_z" loading="lazy" />
-            </div>
+            <div class="proj-fig"><img src="assets/figures/hpc-cost-banner.png" alt="Cost distribution of 2,127 solver runs and predicted-versus-actual cost on unseen campaigns from the gradient-boosted model" loading="lazy" /></div>
           </a>
 
           <!-- 04 Condensed matter theory (Cooper pairs + phonon magnetism) -->
@@ -236,17 +234,6 @@
             </div>
           </a>
 
-          <!-- 05 Data science case study -->
-          <a class="proj" href="projects/hpc-cost-analytics.html">
-            <div class="proj-text">
-              <span class="proj-num">05 · Data science</span>
-              <h3 class="proj-title">Pricing HPC Runs Before Launch: Cost Analytics on My Own Research Computing</h3>
-              <p class="proj-desc">Two years of solver telemetry (2,127 runs) turned into a DuckDB warehouse, a leakage-aware cost model, and a calibrated walltime policy: 95%-safe requests at 4.6x headroom instead of a measured 17x blanket cushion.</p>
-              <ul class="tags"><li>DuckDB · SQL</li><li>scikit-learn</li><li>Conformal prediction</li><li>Leakage-aware CV</li></ul>
-              <span class="proj-more">View project →</span>
-            </div>
-            <div class="proj-fig"><img src="assets/figures/hpc-cost-banner.png" alt="Cost distribution of 2,127 solver runs and predicted-versus-actual cost on unseen campaigns from the gradient-boosted model" loading="lazy" /></div>
-          </a>
         </div>
       </section>
 

@@ -122,6 +122,8 @@ p { margin: 0 0 1rem; }
 .main { min-width: 0; }
 .main .section { padding: clamp(48px, 6vw, 64px) 0; }
 .main .section:first-child { padding-top: 0; }
+.main #about { padding-bottom: clamp(22px, 3vw, 30px); }
+.main #projects { padding-top: clamp(22px, 3vw, 30px); }
 .main .section h2 { font-size: 1.5rem; }
 .about-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 26px; row-gap: 15px; max-width: none; margin: 0; }
 .about-dl dt { font-weight: 700; color: var(--ink); }
@@ -221,6 +223,11 @@ p { margin: 0 0 1rem; }
 .proj-fig-compose .tall { grid-row: 1 / 3; }
 .proj-fig-compose img { max-height: none; width: 100%; border-radius: 4px; }
 .proj-diagram { grid-column: 1 / -1; justify-self: start; max-width: 660px; min-width: 0; overflow: hidden; padding: 12px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); box-shadow: var(--shadow); }
+/* featured card (NQS): stack the 2-panel figure and the pipeline diagram in the right column */
+.proj-media { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.proj-media .proj-fig { align-self: stretch; }
+.proj--featured .proj-diagram { grid-column: auto; justify-self: stretch; max-width: 100%; }
+.proj--featured .diagram-wrap svg { min-width: 0; }
 @media (max-width: 720px) {
   .proj { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 30px 0; }
   .proj-fig { order: -1; }
@@ -253,6 +260,11 @@ p { margin: 0 0 1rem; }
 .figure-row .cell { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow); }
 .figure-row img { width: 100%; display: block; }
 @media (max-width: 560px) { .figure-row { gap: 8px; } }
+/* composed multi-panel figure on detail pages — tall panel left, two panels stacked right
+   (same layout the landing-page banner used) */
+.figure-compose { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; align-items: center; }
+.figure-compose .tall { grid-row: 1 / 3; }
+.figure-compose img { border-radius: 4px; }
 /* inline SVG pipeline diagram — scrolls within its own frame on narrow screens */
 .diagram-wrap { overflow-x: auto; }
 .diagram-wrap svg { display: block; width: 100%; min-width: 620px; height: auto; }
