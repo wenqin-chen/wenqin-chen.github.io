@@ -256,7 +256,7 @@ p { margin: 0 0 1rem; }
 .proj-media .proj-fig { align-self: stretch; }
 .proj > .proj-media-qc {
   display: grid; grid-template-columns: 104px minmax(0, 1fr);
-  align-items: center; gap: 12px;
+  align-items: center; gap: 12px; max-width: 350px;
 }
 .proj-media-qc .braid-fig { justify-self: center; }
 .proj-media-qc .proj-fig { min-width: 0; width: 100%; }
