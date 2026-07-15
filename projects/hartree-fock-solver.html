@@ -7,7 +7,7 @@
   <meta name="description" content="A from-scratch self-consistent mean-field (Hartree–Fock) program for interacting electrons on lattices and in the continuum: a linear-response → instability → self-consistency → band-topology pipeline, validated at every stage." />
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260712" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260715" />
 </head>
 <body>
   <header class="site-header">
@@ -37,12 +37,6 @@
           which phase wins: a from-scratch Hartree–Fock solver, spanning lattice and continuum
           systems, where dozens of candidate orders compete under one validated pipeline that ends
           in a band-topology verdict.</p>
-        <ul class="tags accent" style="margin-top:1.4rem">
-          <li>Python · NumPy / SciPy</li><li>Self-consistent mean-field / Hartree–Fock</li>
-          <li>Linear-response theory</li><li>Pulay / DIIS mixing</li>
-          <li>Berry curvature &amp; Chern numbers</li><li>Kubo transport</li>
-          <li>Numerical convergence discipline</li><li>SLURM / NERSC HPC</li>
-        </ul>
       </div>
 
       <div class="figure-row">
@@ -64,7 +58,7 @@
       <figure class="project-figure" style="max-width:520px">
         <img src="../assets/figures/hf-scf-convergence.png" alt="SCF convergence of a canted-Neel texture: the residual falls five orders of magnitude over 29 iterations while the free energy settles" />
       </figure>
-      <p class="figcaption">A live run at the production anchor cell: the self-consistency residual
+      <p class="figcaption">A live run at the anchor cell: the self-consistency residual
         (dark) falls five orders of magnitude while the free energy (teal) settles; Pulay-accelerated
         mixing rides through the plateaus that trap plain iteration.</p>
 

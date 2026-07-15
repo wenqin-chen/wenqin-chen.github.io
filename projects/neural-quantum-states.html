@@ -7,7 +7,7 @@
   <meta name="description" content="A transformer neural-network wavefunction solving the quantum many-body problem via variational Monte Carlo, built stage by stage against exact-diagonalization and quantum Monte Carlo references, trained on H200 GPUs." />
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260712" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260715" />
 </head>
 <body>
   <header class="site-header">
@@ -34,13 +34,6 @@
         <h1>Attention-Based Neural Quantum States</h1>
         <p class="lead">A transformer neural network that solves the quantum many-body problem:
           variational, GPU-accelerated, and built stage by stage against exact references.</p>
-        <ul class="tags accent" style="margin-top:1.4rem">
-          <li>JAX</li><li>Transformers</li><li>Variational Monte Carlo</li>
-          <li>Natural-gradient optimization (MinSR)</li>
-          <li>Self-consistent Hartree–Fock warm starts</li>
-          <li>Physics-informed inductive biases</li><li>Ablation studies</li>
-          <li>GPU (H200) &amp; SLURM</li>
-        </ul>
       </div>
 
       <figure class="project-figure diagram-fig">
@@ -179,9 +172,9 @@
         <p>Before trusting the network with physics, I benchmarked the architecture
           against <strong>exact diagonalization</strong> of the same Hamiltonian. The trained network
           lands 0.7 mHa above the exact ground state at two electrons, within Monte-Carlo
-          noise (96% of the correlation energy). Every design choice is grounded in a
-          published precedent or a theorem, and a <strong>size-scaling ablation</strong> selected the production
-          ansatz. The convergence panel above shows a production run at 18 electrons: several
+          noise, recovering 96% of the correlation energy. Every design choice is grounded in a
+          published precedent or a theorem, and a <strong>size-scaling ablation</strong> selected the final
+          ansatz. The convergence panel above shows a large-scale run at 18 electrons: several
           competing candidate states, each optimized to a tight energy plateau and compared.</p>
 
         <h2>The warm start: a from-scratch Hartree–Fock engine</h2>
