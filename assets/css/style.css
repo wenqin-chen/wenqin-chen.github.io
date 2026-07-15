@@ -291,13 +291,12 @@ p { margin: 0 0 1rem; }
   .nqs-texture-panel { width: 100%; max-width: 240px; justify-self: center; }
 }
 
-/* ---------- inline link badges ([Code] [arXiv] ...) ---------- */
-.link-badges { font-weight: 600; white-space: nowrap; }
-.link-badges a { position: relative; z-index: 1; color: var(--accent); text-decoration: none; }
-.link-badges a::before { content: "["; }
-.link-badges a::after { content: "]"; }
-.link-badges a:hover { text-decoration: underline; }
-.link-badges a + a { margin-left: 6px; }
+/* ---------- inline link badges [Project Page] [arXiv] [Code] ---------- */
+.link-badges { font-family: var(--serif); font-size: 0.72rem; font-weight: 400; color: var(--ink); white-space: nowrap; }
+.link-badges a { position: relative; z-index: 1; color: #3d6fa8; text-decoration: underline; }
+.link-badges a:hover { color: #2f5680; }
+[data-theme="dark"] .link-badges a { color: #7aa9dc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .link-badges a { color: #7aa9dc; } }
 
 /* ---------- project detail page ---------- */
 .back { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); font-weight: 550; margin-bottom: 26px; }
