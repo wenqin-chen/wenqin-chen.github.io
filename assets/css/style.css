@@ -291,13 +291,13 @@ p { margin: 0 0 1rem; }
   .nqs-texture-panel { width: 100%; max-width: 240px; justify-self: center; }
 }
 
-/* ---------- link badges ([Code] [arXiv] ...) ---------- */
-.link-badges { display: flex; flex-wrap: wrap; gap: 3px 14px; margin: 2px 0 0; font-size: .87rem; font-weight: 600; font-family: var(--sans); }
+/* ---------- inline link badges ([Code] [arXiv] ...) ---------- */
+.link-badges { font-weight: 600; white-space: nowrap; }
 .link-badges a { position: relative; z-index: 1; color: var(--accent); text-decoration: none; }
 .link-badges a::before { content: "["; }
 .link-badges a::after { content: "]"; }
 .link-badges a:hover { text-decoration: underline; }
-.project-hero .link-badges { margin-top: 1.05rem; font-size: .93rem; }
+.link-badges a + a { margin-left: 6px; }
 
 /* ---------- project detail page ---------- */
 .back { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); font-weight: 550; margin-bottom: 26px; }
