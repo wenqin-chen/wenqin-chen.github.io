@@ -7,7 +7,7 @@ Reads only the bundled `figure_data.npz` in this folder (no dependency on the re
 Two panels, replotted from the raw run data (never cropped from an old PNG):
   LEFT  — the real-space spin texture the trained NQS holds (cell-D skyrmion crystal): colour = out-of-plane
           spin m_z, arrows = in-plane spin; colourbar + x/y axes in Bohr + 'skyrmion core' / 'magnetic cell'.
-  RIGHT — the N=18 training convergence: four candidate orders (skyrmion crystal, paramagnet, in-plane spiral,
+  RIGHT — the N=18 training convergence: four candidate orders (skyrmion crystal, fluid, in-plane spiral,
           ferromagnet), running-average variational energy vs MinSR step.
 
 Provenance of figure_data.npz (extracted once from the continuum_skyrmion_nqs research run; see README.md):
@@ -86,12 +86,12 @@ axA.annotate("skyrmion core", xy=(X[i, j], Y[i, j]), xytext=(0.0, 14.4), textcoo
              bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="0.4", alpha=0.92))
 
 # ---- Panel B: training convergence ----
-for y, col, lab, lw, z in [(skx, C_SKX, "skyrmion crystal", 2.5, 6), (fluid, C_FL, "paramagnet", 2.5, 6),
+for y, col, lab, lw, z in [(skx, C_SKX, "skyrmion crystal", 2.5, 6), (fluid, C_FL, "fluid", 2.5, 6),
                            (spiral, C_SP, "in-plane spiral", 2.3, 5), (fm, C_FM, "ferromagnet", 2.1, 4)]:
     axB.plot(np.arange(len(y)), y, color=col, lw=0.6, alpha=0.16, zorder=z - 1)
     ra = runavg(y); axB.plot(np.arange(len(ra)) + 7, ra, color=col, lw=lw, label=lab, zorder=z)
 axB.set_xlim(0, 600); axB.set_ylim(-13.95, -13.0); axB.grid(alpha=0.2)
-axB.axhspan(-13.881, -13.861, color="#c1121f", alpha=0.18, zorder=0)   # skyrmion crystal <-> paramagnet tie
+axB.axhspan(-13.881, -13.861, color="#c1121f", alpha=0.18, zorder=0)   # skyrmion crystal <-> fluid tie
 axB.set_xlabel("optimization step  (MinSR)")
 axB.set_ylabel(r"variational energy  $\langle H\rangle$  (Ha)")
 axB.yaxis.set_label_position("right"); axB.yaxis.tick_right()   # mirror layout keeps the middle gap clean

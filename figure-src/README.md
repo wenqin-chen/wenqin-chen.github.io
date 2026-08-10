@@ -68,7 +68,7 @@ This rewrites `../assets/figures/cooper-pair-banner.png` and
 ## What the figure shows
 - **Left panel** — the real-space spin texture the trained network holds (a cell-D skyrmion crystal):
   colour is out-of-plane spin `m_z`, arrows are in-plane spin; the green rhombus is one magnetic cell.
-- **Right panel** — the N=18 training convergence: four candidate orders (skyrmion crystal, paramagnet,
+- **Right panel** — the N=18 training convergence: four candidate orders (skyrmion crystal, fluid,
   in-plane spiral, ferromagnet), each optimized by natural-gradient (MinSR) variational Monte Carlo.
 
 ## Data provenance (`figure_data.npz`)
